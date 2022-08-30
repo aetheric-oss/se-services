@@ -10,13 +10,15 @@ Item | Value
 --- | ---
 Maintainer(s) | @arrow-air/services
 
+:exclamation: This document is intended for internal use.
+
 ## 1.0 Project Description
 
 #### 1.0.1 Background
 
 The electric vertical takeoff and landing (eVTOL) aircraft is a radical breakthrough in rapid, zero-emission, point-to-point travel. In an urban environment currently stifled by congested roadways and inefficient routing, a well populated eVTOL network stands to completely disrupt human mobility. Urban aerial mobility (UAM) markets are set to expand dramatically within the next few years, with initial flights expected as early as 2026.
 
-VTOL vertipads boast a compact terrestrial footprint, allowing dense distribution throughout the urban and suburban environment. Passengers may soon take flight from a local rooftop, parking lot, park, courtyard, pier - or even a backyard. 
+The demands of an immense eVTOL network include a substantial number of vertiports, which are the main bottleneck on flow into and out of the network. Fortunately, due to the vertical nature of eVTOL operations, no runways are required! Vertipads boast an impressively compact terrestrial footprint, allowing dense vertiport distribution throughout the urban and suburban landscape. You may soon take wing from a local rooftop, parking lot, pier, park, plaza - or even your backyard!
 
 Proliferation of accessible vertiports will open the skies to a vast and motley assortment of aircraft: public transit ferries, independent rideshares, corporate charters, cargo deliveries by the dozen, municipal fleets, medical drones, construction surveyors, vigilant security patrols, and hundreds more. While use cases stretch as far as the imagination, airspace and vertiport resources are far more limited.
 
