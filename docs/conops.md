@@ -14,7 +14,7 @@ Maintainer(s) | @arrow-air/services
 
 #### 1.0.1 Background
 
-The electric vertical takeoff and landing (eVTOL) aircraft is a radical breakthrough in rapid, zero-emission, point-to-point travel. In an urban environment currently stifled by congested roadways and inefficient routing, a well populated eVTOL network stands to completely disrupt human mobility. Urban aerial mobility (UAM) markets are expected to expand dramatically within the next few years, with initial flights expected as early as 2026.
+The electric vertical takeoff and landing (eVTOL) aircraft is a radical breakthrough in rapid, zero-emission, point-to-point travel. In an urban environment currently stifled by congested roadways and inefficient routing, a well populated eVTOL network stands to completely disrupt human mobility. Urban aerial mobility (UAM) markets are set to expand dramatically within the next few years, with initial flights expected as early as 2026.
 
 VTOL vertipads boast a compact terrestrial footprint, allowing dense distribution throughout the urban and suburban environment. Passengers may soon take flight from a local rooftop, parking lot, park, courtyard, pier - or even a backyard. 
 
@@ -24,7 +24,7 @@ Core to the vision of advanced aerial mobility is an open software ecosystem ena
 
 This document proposes an open software architecture to support dynamic airspace management and data exchange between Urban Aerial Mobility (UAM) actors. The proposed system undertakes the responsibilities of **Provider of Services to UAM (PSU)** and **Provider of Supplemental Data and Services (SDSP)** as outlined by the [NASA UAM Airspace Research Roadmap](https://ntrs.nasa.gov/citations/20210019876). It also proposes use cases in the form of rideshare and cargo services.
 
-In the role of PSU, this architecture enables operators safe and secure access to airspace, manages contingencies, complies with the data exchange systems of regulatory bodies, and allows interoperability with other service providers. In the role of SDSP, the architecture offers automated maintenance scheduling, certification monitoring, telemetry broadcasts, and secure storage. Arrow's client-facing services support rideshare and cargo operations, exposing an API for customer applications to request journeys between vertiports with traditional and alternative payment options.
+In the role of PSU, this architecture enables operators safe and secure access to airspace, manages contingencies, complies with the data exchange systems of regulatory bodies, and allows interoperability with other service providers. In the role of SDSP, the architecture offers automated maintenance scheduling, certification monitoring, telemetry broadcasts, and secure storage. Arrow's client-facing services support rideshare and cargo operations, exposing an API for customers request journeys between vertiports using traditional and alternative payment options.
 
 #### 1.0.2 Assumptions and Constraints
 This architecture acknowledges the existence of other Providers of Service (PSUs), that vertiports and aircraft will be owned and operated by various companies and individuals, and that compliance with civil aviation authority differs from region to region.
@@ -115,7 +115,7 @@ These services enable UAM operators to access airspace legally, safely, and secu
 
 Service | Responsibilities
 --- | ---
-`svc-scheduler` | Airspace management<br>Vertiport scheduling<br>Flight plan bookkeeping<br>Fleet routing optimization
+`svc-scheduler` | Dynamic airspace management<br>Vertiport scheduling<br>Flight plan bookkeeping<br>Fleet routing optimization
 `svc-discovery` | Interaction with other PSUs<br>Adheres to standardized PSU interfaces
 `svc-compliance` | Notifications, flight restrictions, authorization approvals from local authority<br>Automated dispatch of flight plans and release requests to local authority<br>Complies with regulatory file formats such as FIDXP<sup>*</sup>
 `svc-guidance` | Noncompulsory flight path guidance<br>Importance increases with number of aerial actors
@@ -268,8 +268,8 @@ contact --> customer
 Scenario | Description
 ---- | ----
 Private Charter | Clients<sup>*</sup> can register a flight plan directly with the Arrow PSU. Clients submit a flight plan specifying an aircraft, the departure vertiport, the arrival vertiport, the flight manifest, and the planned departure date and time.
-Rideshare | Clients request flights through a software API, website, or mobile app. `svc-rideshare` handles the customer interaction, and forwards the request to the PSU domain. In this case, a client only provide a departure time, departure vertiport, and destination vertiport.
-Cargo | In the envisioned rideshare system, clients may request flights through a software API, website, or mobile app. The flight request is handled by the PSU domain of the Services ecosystem. In this case, clients provide a departure time, departure vertiport, destination vertiport, and the approximate weight of cargo. They may also specify if the trip will be recurring for planned deliveries.
+Rideshare | Clients request flights through a software API, website, or mobile app. `svc-rideshare` handles the customer interaction, and forwards the request to the PSU domain. In this case, a client only provides a departure time, a departure vertiport, and a destination vertiport.
+Cargo | Clients may request flights through a software API, website, or mobile app. Customer interaction is handled by `svc-cargo`, with confirmed flight requests forwarded the PSU domain of the Services ecosystem. Cargo clients provide a departure time, a departure vertiport, a destination vertiport, and the approximate weight of the cargo to be shipped. They may also specify if the trip will be recurring for planned deliveries.
 
 <sup>*</sup> Clients include individuals, companies, and automated processes
 
@@ -397,7 +397,7 @@ Vetiports can be owned by independent entities. Arrow will require certain stand
 
 A vertiport operator's responsibilities include ensuring that aircraft depart on schedule, that status is accurately reported, and that standards of safety and cleanliness are met for the entire vertiport (pads and adjoining passenger areas). 
 
-Only specific person(s) in the Arrow database can conduct pre-flight inspections and approve aircraft takeoff. Vertiport operators are responsible for maintaining and accurately reporting the certifications of these personnel.
+Only specific persons in the Arrow database can conduct pre-flight inspections and approve aircraft takeoff. Vertiport operators are responsible for maintaining and accurately reporting the certifications of these personnel.
 
 Periodic inspections will occur, conducted through an independent agency or a rotating team of Arrow officials. The details of the inspection will be stored immutably (uneditable) and will include the name of the inspector and agency for public review.
 
