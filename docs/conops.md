@@ -37,6 +37,8 @@ This architecture intends to abide by standardized protocols established by NASA
 
 The Arrow Software Services are broken into several domains of responsibility.
 
+<center> 
+
 ```mermaid
 graph TB
 
@@ -67,6 +69,7 @@ subgraph Arrow Rideshare & Cargo Services
 	contact[svc-contact]
 end
 ```
+</center> 
 
 **Provider of Services (PSU)** elements enable UAM operators to access airspace legally, safely, and securely. 
 
@@ -100,13 +103,15 @@ Each service has its own set of documents which should be referred to for more d
 - Interface Control Document (ICD)
 - Verification and Validation (V&V) Document
 
-A set of user stories for rideshare and cargo operations are currently tracked on the [Arrow Google Drive](https://docs.google.com/spreadsheets/d/1Ad238NAEj6QUzgsjPTRRFJy6NiQVQt2e7affwVVDAFo/edit?usp=sharing).
+A set of user stories for rideshare and cargo operations is currently tracked on the [Arrow Google Drive](https://docs.google.com/spreadsheets/d/1Ad238NAEj6QUzgsjPTRRFJy6NiQVQt2e7affwVVDAFo/edit?usp=sharing).
 
 ### 3.2 Overview of System and Key Elements
 
 #### Provider of Services (PSU) Elements
 
 These services enable UAM operators to access airspace legally, safely, and securely.
+
+<center> 
 
 Service | Responsibilities
 --- | ---
@@ -117,9 +122,13 @@ Service | Responsibilities
 
 <sup>*</sup> FAA-Industry Data Exchange Protocol
 
+</center> 
+
 #### Supplemental Data and Service Provider (SDSP) Elements
 
 These elements provide *supplemental* (not safety critical) services for UAM operations.
+
+<center> 
 
 Service | Responsibilities
 --- | ---
@@ -127,10 +136,14 @@ Service | Responsibilities
 `svc-telemetry` | Receives and stores live vehicle telemetry<sup>*</sup><br>Rebroadcasts to ground control/air traffic control tools and other listeners
 `svc-upkeep` | Monitor expiration of vehicle and component certifications<br>Preemptively schedule flights for maintenance
 
+</center>
+
 <sup>*</sup> May qualify as a PSU element.
 #### Rideshare and Cargo Services
 
 These are client-facing services which expose an API. These are not safety-critical.
+
+<center> 
 
 Service | Responsibilities
 --- | ---
@@ -139,10 +152,14 @@ Service | Responsibilities
 `svc-payment` | Payment processing, accepting traditional payments and cryptocurrencies.
 `svc-contact` | In all other parts of the system, a customer is an integer ID<br>This service has sole access to customer information, the interface to issue notifications to a client
 
+</center> 
+
 ### 3.3 External Interfaces
 This section describes the interfaces of the system with any other systems that are external to the project. Interfaces *between* services are not shown in these diagrams.
 
 #### PSU Interfaces
+
+<center> 
 
 ```mermaid
 flowchart TD
@@ -162,6 +179,9 @@ guid --> pilot(UAM Pilot)
 sched <--> pilot
 sched <--> port
 ```
+
+</center> 
+
 `svc-scheduler`:
 - Reports schedules to Vertiport Operators and Pilots in Control (PIC).
 - Vertiport Operators and Pilots may make requests to the scheduler to delay or accelerate a departure, cancel a flight, or initiate emergency operations.
@@ -182,6 +202,8 @@ sched <--> port
 
 #### SDSP Interfaces
 
+<center> 
+
 ```mermaid
 
 flowchart BT
@@ -198,6 +220,8 @@ tlm --> gcs
 
 ```
 
+</center> 
+
 `svc-telemetry`:
 - UAM vehicles broadcast telemetry, which is processed and stored by this service.
 - This service may re-broadcast telemetry to clients such as Air Traffic Control (ATC) software.
@@ -210,6 +234,9 @@ tlm --> gcs
 
 
 #### Rideshare and Cargo Interfaces
+
+<center> 
+
 ```mermaid
 flowchart TB
 subgraph Rideshare and Cargo
@@ -224,6 +251,7 @@ customer <--> cargo
 customer <--> pay
 contact --> customer
 ```
+</center> 
 
 `svc-rideshare` & `svc-cargo`:
 - APIs for clients to request flights. Separated from airspace management (`svc-scheduler`).
@@ -235,6 +263,8 @@ contact --> customer
 - Access to customer SMS, Email, Push Notifications
 ### 3.4 Proposed Capabilities
 
+<center> 
+
 Scenario | Description
 ---- | ----
 Private Charter | Clients<sup>*</sup> can register a flight plan directly with the Arrow PSU. Clients submit a flight plan specifying an aircraft, the departure vertiport, the arrival vertiport, the flight manifest, and the planned departure date and time.
@@ -242,6 +272,8 @@ Rideshare | Clients request flights through a software API, website, or mobile a
 Cargo | In the envisioned rideshare system, clients may request flights through a software API, website, or mobile app. The flight request is handled by the PSU domain of the Services ecosystem. In this case, clients provide a departure time, departure vertiport, destination vertiport, and the approximate weight of cargo. They may also specify if the trip will be recurring for planned deliveries.
 
 <sup>*</sup> Clients include individuals, companies, and automated processes
+
+</center> 
 
 In all of the above scenarios, the `svc-scheduler` in the Arrow PSU receives a request for a new flight and determines if that flight can be accommodated. It must take into account numerous factors such as vertiport schedules, available aircraft, weather, and emergency conditions.
 
@@ -255,23 +287,32 @@ In cases where the journey cannot be accommodated, alternatives should be recomm
 
 Modes of operation correspond with a general fleet routing behavior. They indicate the current goal of flight operations.
 
+<center> 
+
 Mode | Description
 --- | ---
 Nominal | New flight plans may be created if they can be accommodated.<br>Optimize rideshare flights to maximize passengers per aircraft.<br>Optimize flight graph to accommodate more flights per hour.<br>A buzzing flight graph maximizing motion.
 Wind Down | No new flights plans are accepted (save for municipal and emergency flights) for a given time frame.<br>Confirmed flight plans execute as previously planned.<br>Can still add new rideshare passengers to existing flight plans.<br>May occur daily to close flight operations if services are not 24/7.<br>"Chokes" a flight graph to reduce the level of activity.
 Emergency No-Fly | All aerial operations must cease at earliest opportunity, even if arrival vertiport is different than planned.<br>Improvised landing zones are authorized at this stage to handle vertiport overflow.<br>All live aircraft in the flight graph immediately "seek cover" at the nearest safe haven.
 
+</center> 
+
 Fleet routing can also be impacted by other factors such as vertiport redirect orders, restricted (or "special use") airspaces, and emergency flights taking precedence. These factors may apply to multiple modes of operation. In some cases they are intentionally ignored, such as the case of an emergency no-fly scenario.
+
 
 ## 4.0 Operational Scenarios, Use Cases and/or Design Reference Missions
 
 See "Modes of Operation" (section 3.5).
+
+<center> 
 
 Mode | Scenario
 --- | ---
 Nominal | Nominal flight operations
 Wind Down | Ending daily flight operations<br>Overtaxed flight graph - intense delays, many hovering aircraft waiting for landing clearance
 Emergency No-Fly | Terrorism (including cyber attacks)<br>Sudden weather changes, such as a tornado touchdown
+
+</center> 
 
 The current mode can be conveyed over radio or cellular channels in the event of a critical outage of software services (electrical failures, solar flares, etc.). Such an event should initiate "Wind Down" mode at minimum, and each pilot and UAM operator will follow a manual procedure for vertiport access and selection of improvised landing sites, if necessary.
 
