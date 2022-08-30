@@ -18,7 +18,7 @@ Maintainer(s) | @arrow-air/services
 
 The electric vertical takeoff and landing (eVTOL) aircraft is a radical breakthrough in rapid, zero-emission, point-to-point travel. In an urban environment currently stifled by congested roadways and inefficient routing, a well populated eVTOL network stands to completely disrupt human mobility. Urban aerial mobility (UAM) markets are set to expand dramatically within the next few years, with initial flights expected as early as 2026.
 
-The demands of an immense eVTOL network include a substantial number of vertiports, which are the main bottleneck on flow into and out of the network. Fortunately, due to the vertical nature of eVTOL operations, no runways are required! Vertipads boast an impressively compact terrestrial footprint, allowing dense vertiport distribution throughout the urban and suburban landscape. You may soon take wing from a local rooftop, parking lot, pier, park, plaza - or even your backyard!
+The demands of an immense eVTOL network include a substantial number of vertiports, which are the main bottleneck to flow into and out of the network. Fortunately, due to the vertical nature of eVTOL operations, no runways are required! Vertipads boast an impressively compact terrestrial footprint, allowing dense vertiport distribution throughout the urban and suburban landscape. You may soon take wing from a local rooftop, parking lot, pier, park, plaza - or even your backyard!
 
 Proliferation of accessible vertiports will open the skies to a vast and motley assortment of aircraft: public transit ferries, independent rideshares, corporate charters, cargo deliveries by the dozen, municipal fleets, medical drones, construction surveyors, vigilant security patrols, and hundreds more. While use cases stretch as far as the imagination, airspace and vertiport resources are far more limited.
 
@@ -67,6 +67,7 @@ graph TB
 subgraph Arrow Rideshare & Cargo Services
 	share[svc-rideshare]
 	cargo[svc-cargo]
+    charter[svc-charter]
 	pay[svc-payment]
 	contact[svc-contact]
 end
@@ -151,6 +152,7 @@ Service | Responsibilities
 --- | ---
 `svc-rideshare` | The public API for passengers to request rides through Arrow Services 
 `svc-cargo` | The public API for clients to request cargo transport through Arrow Services
+`svc-charter`| The public API for individuals filing charters for specific aircraft.
 `svc-payment` | Payment processing, accepting traditional payments and cryptocurrencies.
 `svc-contact` | In all other parts of the system, a customer is an integer ID<br>This service has sole access to customer information, the interface to issue notifications to a client
 
@@ -244,18 +246,20 @@ flowchart TB
 subgraph Rideshare and Cargo
 	share[svc-rideshare]
 	cargo[svc-cargo]
+    charter[svc-charter]
 	pay[svc-payment]
 	contact[svc-contact]
 end
 
 customer[Client App] <--> share
 customer <--> cargo
+customer <--> charter
 customer <--> pay
 contact --> customer
 ```
 </center> 
 
-`svc-rideshare` & `svc-cargo`:
+`svc-rideshare`, `svc-cargo`, `svc-charter`:
 - APIs for clients to request flights. Separated from airspace management (`svc-scheduler`).
 
 `svc-payment`:
@@ -269,7 +273,7 @@ contact --> customer
 
 Scenario | Description
 ---- | ----
-Private Charter | Clients<sup>*</sup> can register a flight plan directly with the Arrow PSU. Clients submit a flight plan specifying an aircraft, the departure vertiport, the arrival vertiport, the flight manifest, and the planned departure date and time.
+Private Charter | Clients<sup>*</sup> can register a flight plan through `svc-charter`, which passes their request to the Arrow PSU. Clients submit a flight plan specifying an aircraft, the departure vertiport, the arrival vertiport, the flight manifest, and the planned departure date and time.
 Rideshare | Clients request flights through a software API, website, or mobile app. `svc-rideshare` handles the customer interaction, and forwards the request to the PSU domain. In this case, a client only provides a departure time, a departure vertiport, and a destination vertiport.
 Cargo | Clients may request flights through a software API, website, or mobile app. Customer interaction is handled by `svc-cargo`, with confirmed flight requests forwarded the PSU domain of the Services ecosystem. Cargo clients provide a departure time, a departure vertiport, a destination vertiport, and the approximate weight of the cargo to be shipped. They may also specify if the trip will be recurring for planned deliveries.
 
