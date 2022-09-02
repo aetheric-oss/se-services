@@ -363,13 +363,11 @@ These possibly include:
 
 ## 6.0 Support Environment
 
-Arrow or some division of the civil aviation authority must maintain a team of IT professionals and system administrators. Some of these individuals may require government clearance or special regulatory licenses depending on the location and capabilities of the system.
+Arrow (or a division of the local civil aviation authority) will maintain a team of IT professionals and system administrators. Some of these individuals may require government clearance or special regulatory licenses depending on the location and capabilities of the system.
 
-Each instance of the PSU is composed of various microservices. These microservices may be upgraded or downgraded remotely for incremental rollout or rollback on a region-by-region basis. Arrow will maintain a live map of the status and versions of each service, information which is contained in each service's health and status packet.
+Each instance of the PSU is composed of various microservices. These microservices may be upgraded or downgraded remotely for incremental rollout or rollback on a region-by-region basis. Arrow will maintain a live map of the status and versions of each service, information which is contained in each service's health and status packet. Configuration management (CM) will be detailed in a separate, more detailed document.
 
 An authorized individual should be onsite (or nearby) at every server location during aerial operations to attend server hardware in the event of crashes and outages.
-
-FIXME
 
 ## 7.0 Impact Considerations
 
@@ -385,15 +383,13 @@ In cities with distinct and separate "business parks" and "bedroom communities",
 
 New roads and highways are expensive to build, both in financial and environmental terms. Cutting down trees, disrupting local wildlife, paving miles of asphalt, erecting bridges, tunnels, road signs, reflectors, and guard rails, painting road lines - all expensive and lengthy tasks that are nonetheless necessary for safe automobile travel. The maintenance costs are also significant, and numerous elements frequently conspire to put a road out of commission: crumbling supports, potholes, cracks, sinkholes, fallen trees, snow, animal crossings, and so on.
 
-VTOL aircraft operations require considerably less physical infrastructure and maintenance in comparison. Flying at an altitude above the treeline, VTOL aircraft operations leave the landscape untouched between the points of travel. Vertipads boast a relatively minimal footprint, and are easier and faster to build and maintain than miles of road. On this count, point-to-point aerial travel would connect communities far more cheaply, sustainably, and quickly than ground transit. The savings become more pronounced with time, as maintenance costs are also significantly lower. While a future without roads is surpassingly distant, VTOL routes present a strong case for new connections, especially where geographical barriers (such as hills, rivers, bogs) and restricted municipal budgets are concerned.
+VTOL aircraft operations require substantially less physical infrastructure and maintenance in comparison. Flying at an altitude above the treeline, VTOL aircraft operations leave the landscape untouched between the points of travel. Vertipads boast a relatively minimal footprint, and are easier and faster to build and maintain than miles of road. On this count, point-to-point aerial travel would connect communities far more cheaply, sustainably, and quickly than ground transit. The savings become more pronounced with time, as maintenance costs are also significantly lower. While a future without roads is surpassingly distant, VTOL routes present a strong case for new connections, especially where geographical barriers (such as hills, rivers, bogs) and restricted municipal budgets are concerned.
 
 #### Drawbacks
 
-Early tests indicate that [VTOL aircraft have a lower takeoff decibel rating than a helicopter](https://ntrs.nasa.gov/citations/20220006729). Even so, the combination of hundreds of drones and aircraft would make a noticeable contribution to urban noise.
+Early tests indicate that [VTOL aircraft have a lower takeoff decibel rating than a helicopter](https://ntrs.nasa.gov/citations/20220006729). Even so, the combination of hundreds of drones and aircraft could make a noticeable contribution to urban noise.
 
-Migratory patterns of bird and insect species could be disrupted by increased aerial operations.
-
-FIXME
+The effects of increased VTOL aerial operations on wildlife should be researched. Migratory patterns of avian and inspect species in particular could be impacted by aerial traffic.
 
 ### 7.2 Organizational Impacts
 
@@ -428,40 +424,98 @@ Alternatively, maintenance vertiports may be completely shared. A certified mech
 Certified mechanics may set up their own vertiports on the Arrow PSU, similar to automobile repair shops. A dedicated vertiport operator is still required in this case. Collective ownership of a vertiport by multiple attached mechanic shops is allowed and encouraged.
 
 #### System Administrators and IT Services
-
 Servers and onsite tech support.
+
 #### Government Liaisons
 
 Consultants or part-time government liaisons will be required to communicate with civil aviation authorities, especially in countries where English is not the primary business language.
 
-Legally operating, avoiding fines, navigating government bureaucracy.
-
 #### Legal
 
-Claims against the Arrow service, crisis management, prevention
+Handle suits against the Arrow Services. Crisis management, prevention. Adherence to local civil aviation laws. Submission of appropriate paperwork.
 
 #### Public Relations
 
-Advertising, community outreach, 
+Design, advertising, community outreach, rider surveys.
 
 ### 7.3 Technical Impacts
-*This subsection describes the anticipated scientific or technical impact of a successful mission or deployment, what scientific questions will be answered, what knowledge gaps will be filled, and what services will be provided. If the purpose of this system is to improve operations or logistics instead of science, describe the anticipated impact of the system in those terms.*
 
-TODO:
-- Change the landscape of human mobility
-- Improve accessibility to regional periphery and mass transit
-	- Flying to an airport to take a longer flight
-	- Flying to a train station to take a longer trip
+#### Stronger Connections with Suburban and Rural Regions
 
-Reduce dependence on cars for commuting. 
+Consider the example of Native American reservations, which often experience [geographical isolation and reduced access to economic opportunities](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6699168/). An on-demand aerial transport solution, to which geographical barriers are largely a non-issue, has the potential to strengthen ties with these regions by increasing access and cutting commute time for all passengers involved.
 
-Free your car. Cars should be about adventure, exploration, not commuting and eating up your budget.
+#### A New Economy
+
+Industries have already begun to blossom around the manufacturing, programming, testing, certification, maintenance, and repair of VTOL aircraft. New economic opportunities will grow around vertiports and surrounding real estate, logistics, shipping, research, and last-mile transit solutions.
+
+#### Improved Perceptions of Public Transit
+
+Many individuals avoid public transit. Here are the top reasons respondents gave in a [2019 Opinion Survey of Transit in San Diego, California, U.S.A.](https://www.sandag.org/uploads/publicationid/publicationid_4649_27278.pdf):
+- System not complete enough/not in my area/can't reach destination
+- Public transit is too slow
+- Have other errands I need to do that require a car
+- Can't get to/from stops or stations by walking
+- Services run too infrequently
+- Not comfortable with other riders/people at stations
+- Public transit travel time is too unreliable
+- Services don't run early/late enough
+
+VTOL aircraft and public buses share two impactful characteristics:
+1) They use predesignated zones for pickup (bus stops and vertipads)
+2) They are largely limited by the number of active vehicles
+
+When pickup zones are sparse, the ability for a passenger to reach a desired destination is severely impacted. Sparse pickup zones also result in further walking. A low number of vehicles can equate to infrequent operation, a pain point given by detractors of public transit. For either of these systems to be considered favorably by prospective riders, a dense distribution of stops and vehicles must exist.
+
+Leaving similarities behind, VTOL networks may address the rest of respondents' concerns with bus systems.
+
+Unlike bus transit networks, VTOL aircraft networks are not predetermined routes. They are point-to-point, meaning that they take riders directly to a requested destination, with a maximum of one or two other stops (similar to a rideshare automobile).
+
+VTOL aircraft also don't encounter road obstacles, traffic lights, stop signs, congestion, or construction zones, reducing commute time to the destination. With proper planning by software systems, a customer may even step directly into a vertiport and onto their flight with no lines or waiting (not taking into account security screening regulations).
+
+#### Decreased Car Ownership and Walkable Cities
+
+[91.5% of U.S. households had at least one vehicle in 2020](https://www.fool.com/the-ascent/research/car-ownership-statistics/). 
+
+[Over 77% of households in Great Britain have a car](https://www.racfoundation.org/wp-content/uploads/2017/11/car-ownership-in-great-britain-leibling-171008-report.pdf).
+
+Car ownership is never-ending torrent of costs. Petrol, insurance, maintenance, repairs, registration fees, not to mention the cost of purchase! If you're one of [the 60% of Americans who live paycheck to paycheck](https://www.cnbc.com/2022/08/01/as-inflation-surges-more-americans-are-living-paycheck-to-paycheck.html), you may have needed an auto loan to purchase your vehicle. Given that [interest rates are inversely related to credit score](https://www.experian.com/blogs/ask-experian/auto-loan-rates-by-credit-score/), and [low credit scores are strongly linked to low income](https://www.federalreserve.gov/econres/notes/feds-notes/are-income-and-credit-scores-highly-correlated-20180813.html), it becomes clear that car ownership preys on low-income individuals. 
+
+Car ownership can also be a necessity. Consider this [statement by the San Diego Workforce Partnership](https://workforce.org/news/transportation-equity-is-about-workforce-equity-too/):
+> Because of the considerable milage and layout of [San Diego County], only 1% of jobs are accessible within 30 minutes by transit and just 8% are accessible in 60 minutes. That means that the 78% of MTS riders who do not have an available car also do not have access to more than 90% of jobs in San Diego. This divide has created economic inequality for many neighborhoods and hampers the ability for low-income communities to create generational wealth.
+
+FIXME
+
+- Rather than building new highways to accommodate more cards, finding ways to decrease traffic. In some cases convert automobile streets to pedestrian walking zones.
+- New neighborhoods designed for walkability with the vertiports nearby
+- The "Walk & Ride" paradigm, reduce the number of cars per capita
+
+#### Expansion of Academic Fields
+
+A new method of transportation has the power to redefine the human experience. It will open new chapters of sociology, ecology, economics, architecture, and urban planning. VTOL networks will affect our rooftops, our wallets, local wildlife, climate, and our connectivity to others.
 
 ## 8.0 Risks and Potential Issues
 
 ### Community Adoption
 
-UAM aircraft 
+Especially in early phases with limited vertiport and aircraft, rideshares and charters will possibly charge a premium in order to fund further capital investment in the VTOL network. These premiums would largely dissipate with increased access and vertiport competition. However, it would be honest to postulate that a socioeconomic disparity in ridership could be present in early operations.
+
+It is not Arrow's intention to solely market to high-income persons. An affordable point-to-point transit solution stands to benefit everyone. [The average U.S. citizen spends more than half their income on housing and transportation](https://www.transportation.gov/mission/health/housing-and-transportation-affordability#transportationandhealthconnection). This statistic is felt even more keenly by low-income communities.
+
+It is critical to motivate high-income individuals to habitually use VTOL services as well. Affluential individuals have significant capacity to influence local policy regarding transport and zoning.
+
+Especially in regions with notable economic disparity, public transit can often become associated low-income or impoverished riders. In San Diego, California, U.S.A., [nearly 3/5ths of metropolitan bus riders in 2018 earned less than $50,000 a year](https://workforce.org/news/transportation-equity-is-about-workforce-equity-too/). Attitudes toward the poor are often visited on the concept of public transit by middle and high income individuals, resulting in negative biases about the safety and cleanliness of bus and trolley systems.
+
+Arrow seeks to serve individuals of all socioeconomic backgrounds, to avoid negative biases in either direction.
+
+### Lobbying
+
+Government cooperation will be critical to the success of Arrow Services.
+
+Lobbies may seek to corner the market on VTOL operations, seeking legislation to push out independent Providers of Services.
+
+Lobbies may seek to fight the rise in UAM, as it cuts into the margins of petrol producers.
+
+TODO: Explore.
 
 ### Anonymous Contribution
 
@@ -473,13 +527,18 @@ Arrow requires multiple "code owner" approvals before code can be contributed. C
 
 Arrow requires contributors to "sign" changes using a cryptographic signature (GPG). The signature indicates that a single individual's account is responsible for all changes made in their name. The Arrow code repositories will automatically reject unsigned changes.
 
-Online ID verification services such as [Persona](https://withpersona.com/) can be used to verify identities while preserving contributors' anonymity. These are not used by Arrow as of yet.
+Online ID verification services can be used to verify identities while preserving contributors' anonymity. These are not used by Arrow as of yet.
 
 In addition to official security audits, Arrow will periodically offer public bounties for documented exploits. The white hat hacker community's help will be invaluable in securing our services and demonstrating our commitment to cyber security.
 
 ### International Contributors
 
 We will be seeking guidance from NASA, FAA, EASA, and other regional agencies regarding "foreign" contributors and restrictions to non-citizens.
+
+
+## Citations
+
+TODO
 
 ## Appendix A: Acronyms & Glossary
 
