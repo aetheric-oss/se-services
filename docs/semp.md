@@ -368,7 +368,8 @@ Document containing:
 - Explanation of memory allocations
 
 Relevant:
-- [Arrow Markdown SDD Template](./templates/sdd.md)
+- [Service SDD Template](https://github.com/Arrow-air/svc-template-rust/blob/develop/docs/sdd.md)
+- [Library SDD Template](https://github.com/Arrow-air/lib-template-rust/blob/develop/docs/sdd.md)
 
 #### :heavy_check_mark: Verification & Validation (V&V) Document
 
@@ -379,7 +380,7 @@ Document detailing:
 - Frameworks Used
 
 Relevant Documentation:
-- [Arrow Markdown V&V Template](./templates/vnv.md)
+- 🚧 Arrow V&V Template
 - [V&V Wiki](https://en.wikipedia.org/wiki/Software_verification_and_validation)
 
 #### :mailbox_with_mail: Interface Control Document (ICD)
@@ -390,7 +391,7 @@ This document details:
 - Frameworks and Libraries
 
 Relevant:
-- [Arrow Markdown ICD Template](./templates/icd.md)
+- 🚧 Arrow ICD Template
 
 #### :diamond_shape_with_a_dot_inside: Configuration Management (CM) Document
 
