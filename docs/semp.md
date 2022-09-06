@@ -31,7 +31,8 @@ documentation
 The process of contributing to a GitHub repository is well documented online.
 1. Make a copy of the repository on the local machine
 2. Initialize a "branch" using git
-    - A branch is a set of changes with a label, e.g. `readme-updates`
+    - A branch is a set of changes with a label, e.g. `my-username/readme-updates`
+    - Good practice to include the name of the author making changes
 3. Edit the relevant document(s)
 4. "Commit" the changes
 	- A commit is a record of a change labeled with a unique number (hash)
