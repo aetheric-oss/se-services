@@ -16,17 +16,13 @@ Maintainer(s) | @arrow-air/services
 
 #### 1.0.1 Background
 
-The electric vertical takeoff and landing (eVTOL) aircraft is a radical breakthrough in rapid, zero-emission, point-to-point travel. In an urban environment currently stifled by congested roadways and inefficient routing, a well populated eVTOL network stands to completely disrupt human mobility. Urban aerial mobility (UAM) markets are set to expand dramatically within the next few years, with initial flights expected as early as 2026.
+The electric vertical takeoff and landing (eVTOL) aircraft is poised to revolutionize transport. In an urban environment plagued by congested roadways, costly infrastructure, and socioeconomic inequality, eVTOL networks offer an attractive solution: rapid, on-demand, point-to-point transit that flies above and beyond the competition. Boasting significantly less construction and maintenance costs than roadways - and far less environmental disruption - VTOL networks promise to outperform all other modes of travel in terms of affordability, accessibility, comfort, and speed. Urban aerial mobility (UAM) markets are set to expand dramatically within the next few years, with initial flights expected as early as 2026.
 
-The demands of an immense eVTOL network include a substantial number of vertiports, which are the main bottleneck to flow into and out of the network. Fortunately, due to the vertical nature of eVTOL operations, no runways are required! Vertipads boast an impressively compact terrestrial footprint, allowing dense vertiport distribution throughout the urban and suburban landscape. You may soon take wing from a local rooftop, parking lot, pier, park, plaza - or even your backyard!
+The impressively compact, helipad-like footprint of a vertiport allows dense distribution throughout the urban and suburban landscape. Accessible vertiports will open the skies to a vast and motley assortment of aircraft: public transit ferries, independent rideshares, corporate charters, cargo deliveries by the dozen, municipal fleets, medical drones, construction surveyors, vigilant security patrols, and hundreds more. While use cases stretch as far as the imagination, airspace and vertiport resources may be far more limited. If these myriad aerial actors wish to share ports and skies safely, traditional airspace management will need to evolve.
 
-Proliferation of accessible vertiports will open the skies to a vast and motley assortment of aircraft: public transit ferries, independent rideshares, corporate charters, cargo deliveries by the dozen, municipal fleets, medical drones, construction surveyors, vigilant security patrols, and hundreds more. While use cases stretch as far as the imagination, airspace and vertiport resources are far more limited.
+This document proposes an open software architecture to support dynamic airspace management, data exchange, and regulatory compliance between Urban Aerial Mobility (UAM) actors. The proposed system undertakes the responsibilities of **Provider of Services to UAM (PSU)** and **Provider of Supplemental Data and Services (SDSP)** as outlined by the [NASA UAM Airspace Research Roadmap](https://ntrs.nasa.gov/citations/20210019876). It also proposes use cases in the form of rideshare and cargo services.
 
-Core to the vision of advanced aerial mobility is an open software ecosystem enabling these myriad aerial actors to share ports and skies safely. Systems for autonomous air traffic management, open data exchange, and automated regulatory compliance will soon be a necessity to ensure fast, legal, and secure access to airspace. Also fundamental to this dream is concept of interoperability: that aircraft from numerous manufacturers, countries, and service providers may share airspace on the same cooperative network.
-
-This document proposes an open software architecture to support dynamic airspace management and data exchange between Urban Aerial Mobility (UAM) actors. The proposed system undertakes the responsibilities of **Provider of Services to UAM (PSU)** and **Provider of Supplemental Data and Services (SDSP)** as outlined by the [NASA UAM Airspace Research Roadmap](https://ntrs.nasa.gov/citations/20210019876). It also proposes use cases in the form of rideshare and cargo services.
-
-In the role of PSU, this architecture enables operators safe and secure access to airspace, manages contingencies, complies with the data exchange systems of regulatory bodies, and allows interoperability with other service providers. In the role of SDSP, the architecture offers automated maintenance scheduling, certification monitoring, telemetry broadcasts, and secure storage. Arrow's client-facing services support rideshare and cargo operations, exposing an API for customers request journeys between vertiports using traditional and alternative payment options.
+The proposed open source ecosystem attempts to capture the future of advanced aerial mobility, as it could be. It enables operators safe and secure access to airspace, manages emergency contingencies, complies with the data exchange systems of multiple regulatory bodies, and allows interoperability with other service providers. In a supplemental capacity, it offers automated maintenance scheduling, certification monitoring, telemetry rebroadcasts, and secure storage. Underscoring all systems is the concept of interoperability: that aircraft from numerous manufacturers, countries, and service providers may cooperate on the same network.
 
 #### 1.0.2 Assumptions and Constraints
 This architecture acknowledges the existence of other Providers of Service (PSUs), that vertiports and aircraft will be owned and operated by various companies and individuals, and that compliance with civil aviation authority differs from region to region.
@@ -129,7 +125,7 @@ Service | Responsibilities
 
 #### Supplemental Data and Service Provider (SDSP) Elements
 
-These elements provide *supplemental* (not safety critical) services for UAM operations.
+These elements provide *supplemental* (not safety-critical) services for UAM operations.
 
 <center> 
 
@@ -144,7 +140,7 @@ Service | Responsibilities
 <sup>*</sup> May qualify as a PSU element.
 #### Rideshare and Cargo Services
 
-These are client-facing services which expose an API. These are not safety-critical.
+These client-facing services expose an API. These are not safety-critical.
 
 <center> 
 
@@ -192,13 +188,13 @@ sched <--> port
 
 `svc-compliance`:
 - Information exchanged with civil aviation authorities may include notifications, confirmation of flight authorization, flight restrictions, charted routes, and Special Use/Activity Airspaces (SAA).
-- FAA-Industry Data Exchange Protocol (FIDXP) is an interface that allows UAM operators to obtain information from the United States' [National Airspace System (NAS) Data Exchange](https://www.faa.gov/air_traffic/nas/).
+- FAA-Industry Data Exchange Protocol (FIDXP) is an interface that allows UAM operators to obtain information from the United States [National Airspace System (NAS) Data Exchange](https://www.faa.gov/air_traffic/nas/).
 - Data exchange formats may differ based on region.
 
 `svc-discovery`:
 - Other PSUs may need to coordinate with this PSU in scheduling flights to vertiports.
 - Example: proprietary PSU schedules a flight from a private vertiport to a public vertiport managed by this PSU.
-- Example: regional instances of *svc-scheduler* coordinate to transfer stewardship of an aircraft which is departing one PSU's region into another PSU's region.
+- Example: regional instances of *svc-scheduler* coordinate to transfer stewardship of an aircraft departing one PSU's region into another PSU's region.
 
 `svc-guidance`:
 - Calculating flight paths will be increasingly important as the number of simultaneous airborne UAM vehicles increases.
@@ -303,7 +299,7 @@ Emergency No-Fly | All aerial operations must cease at earliest opportunity, eve
 
 </center> 
 
-Fleet routing can also be impacted by other factors such as vertiport redirect orders, restricted (or "special use") airspaces, and emergency flights taking precedence. These factors may apply to multiple modes of operation. In some cases they are intentionally ignored, such as the case of an emergency no-fly scenario.
+Fleet routing can also be impacted by other factors such as vertiport redirect orders, restricted (or "special use") airspaces, and emergency flights taking precedence. These factors may apply to multiple modes of operation. In some cases, such as an emergency no-fly scenario, they are intentionally ignored.
 
 
 ## 4.0 Operational Scenarios, Use Cases and/or Design Reference Missions
@@ -320,11 +316,11 @@ Emergency No-Fly | Terrorism (including cyber attacks)<br>Sudden weather changes
 
 </center> 
 
-The current mode can be conveyed over radio or cellular channels in the event of a critical outage of software services (electrical failures, solar flares, etc.). Such an event should initiate "Wind Down" mode at minimum, and each pilot and UAM operator will follow a manual procedure for vertiport access and selection of improvised landing sites, if necessary.
+The current mode can be conveyed over radio or cellular channels in the event of a critical outage of software services (electrical failures, solar flares, etc.). Such an event should initiate "Wind Down" mode (at minimum), and each pilot and UAM operator will follow a manual procedure for vertiport access and selection of improvised landing sites, if necessary.
 
 ### 4.1 Nominal & Off-Nominal Conditions
 
-Nominal and off-nominal conditions will be addressed by service-level requirements, which will link up to high level requirements. These documents are still being developed.
+Nominal and off-nominal conditions will be addressed by service-level requirements, which will link up to high-level requirements. These documents are still being developed.
 
 Existing documents in this realm include:
 - [Services User Stories](https://docs.google.com/spreadsheets/d/1Ad238NAEj6QUzgsjPTRRFJy6NiQVQt2e7affwVVDAFo/edit#gid=0)
@@ -334,18 +330,18 @@ Existing documents in this realm include:
 The physical environment of these services is a set of servers. The location of the servers depends on the services.
 
 #### PSU Locations
-Provider of Service (PSU) elements will be replicated per region, meaning each region with Arrow operations should host a local physical server. This is to minimize communication delay to aerial actors within the region of operation, and to reduce the load on each service by filtering out other regions. 
+Provider of Service (PSU) elements will be replicated per region, meaning each region with Arrow operations should host a local physical server. This is to minimize communication delay to aerial actors within the region of operation and to reduce the load on each service by filtering out other regions. 
 
 For example, a city will have its own `svc-scheduler` instance that only manages the airspace and vertiport schedules of that city's region. Cross-region transfers will be negotiated through the city's PSU interface (`svc-discovery`) and the destination region's PSU interface (which may be another `svc-discovery`, if the destination PSU is based on Arrow Services).
 
 PSU services are *safety-critical* and must continue to execute as long as there are aerial operations occurring. Downtime of the `svc-scheduler` in particular can produce unfavorable conditions for pilots, who would no longer be notified of vertiport schedules.
 
 #### SDSP Locations
-Supplemental Data and Service Provider (SDSP) elements may also be deployed per-region. 
+Supplemental Data and Service Provider (SDSP) elements may also be deployed per region. 
 
 As UAM actors may downlink terabytes of telemetry daily, `svc-telemetry` is a strong candidate for a per-region deployment, as is `svc-storage` for the same reason. Local UAM operators using Air Traffic Control and Ground Control System software may rely on rapid telemetry updates and storage read operations.
 
-Temporary downtime of SDSP services is tolerable to an extent. Ultimately a pilot is still responsible for flying and landing an aircraft safely. This can occur even with temporary downtime of these services.
+Temporary downtime of SDSP services is tolerable to an extent. Ultimately a human pilot is still responsible for flying and landing an aircraft safely.
 
 #### Rideshare and Cargo Services Locations
 These services are not mission-critical, nor do they require sub-second response times. One set of rideshare and cargo services may serve multiple regions, depending on user request load. This will be determined through beta testing and simulation.
@@ -439,55 +435,34 @@ Handle suits against the Arrow Services. Crisis management, prevention. Adherenc
 Design, advertising, community outreach, rider surveys.
 
 ### 7.3 Technical Impacts
+#### A New Economy
+
+eVTOL aircraft herald a wave of new jobs and economic opportunities. Among which are big ticket items like research, manufacturing, software development, materials testing, certification, maintenance, repair, and functional vertiport design.
+
+Economic opportunity may ripple outwards from vertiports. They may be epicenters of new development, including housing, business, recreation, and dining. The private vertiport may become an apartment complex amenity or an employment perk. A vertiport may be collectively owned and maintained by surrounding repair shops or mall tenants.
+
+Urban drone delivery operations, which will cooperate with VTOL aircraft on the same network, will enable new logistics and last-mile transport businesses.
+
+#### Municipal Budget
+
+The cost to establish a new transit route with VTOLs is significantly lower than traditional transit. Already touched on in "Environmental Impacts" is the low cost of building and maintaining new VTOL network routes - specifically, the cost of a vertiport.
+
+New routes to isolated locations can be established the moment that a vertipad is established. No tramways, rails, roads, tunnels, bridges, or highways need to be built. This holds when extending the definition of "isolated" to automobile-only areas where public transit is not located within 30 minutes of walking. No dedicated vehicles, timetables, or staff need to be planned by the city, unlike a bus system. A vertiport added to the system is simply one more place an individual can choose to travel on-demand. This also means less deadhead (no passenger) operation than buses; routes are only active when there are passengers to fly them.
+
+#### Your Budget
+
+An affordable point-to-point transit alternative stands to benefit everyone. Take for example [the average U.S. citizen, who spends more than half their income on housing and transportation](https://www.transportation.gov/mission/health/housing-and-transportation-affordability#transportationandhealthconnection). This is a statistic felt even more keenly by low-income communities, and is due in large part to the cost of car ownership.
+
+The average car owner sees a large portion of their budget going to petrol, insurance, maintenance, repairs, registration fees, and payments toward the cost of purchase. This grows worse for the impoverished when auto loans are involved. Given that [interest rates are inversely related to credit score](https://www.experian.com/blogs/ask-experian/auto-loan-rates-by-credit-score/), and [low credit scores are strongly linked to low income](https://www.federalreserve.gov/econres/notes/feds-notes/are-income-and-credit-scores-highly-correlated-20180813.html), it becomes clear that car ownership is especially taxing on low-income individuals (if they manage to secure a loan at all).
+
+To make issues worse, car ownership is necessary for many individuals to hold a job. Consider this [statement by the San Diego Workforce Partnership](https://workforce.org/news/transportation-equity-is-about-workforce-equity-too/):
+> Because of the considerable milage and layout of [San Diego County], only 1% of jobs are accessible within 30 minutes by transit and just 8% are accessible in 60 minutes. That means that the 78% of MTS riders who do not have an available car also do not have access to more than 90% of jobs in San Diego. This divide has created economic inequality for many neighborhoods and hampers the ability for low-income communities to create generational wealth.
+
+An affordable, safe, fast, and point-to-point transport system with low infrastructure costs is a strong contender for commuting, especially to new areas not yet covered by public transit. It has the potential to save commuters from substantial automobile costs, which would drastically improve the quality of life for many.
 
 #### Stronger Connections with Suburban and Rural Regions
 
 Consider the example of Native American reservations, which often experience [geographical isolation and reduced access to economic opportunities](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6699168/). An on-demand aerial transport solution, to which geographical barriers are largely a non-issue, has the potential to strengthen ties with these regions by increasing access and cutting commute time for all passengers involved.
-
-#### A New Economy
-
-Industries have already begun to blossom around the manufacturing, programming, testing, certification, maintenance, and repair of VTOL aircraft. New economic opportunities will grow around vertiports and surrounding real estate, logistics, shipping, research, and last-mile transit solutions.
-
-#### Improved Perceptions of Public Transit
-
-Many individuals avoid public transit. Here are the top reasons respondents gave in a [2019 Opinion Survey of Transit in San Diego, California, U.S.A.](https://www.sandag.org/uploads/publicationid/publicationid_4649_27278.pdf):
-- System not complete enough/not in my area/can't reach destination
-- Public transit is too slow
-- Have other errands I need to do that require a car
-- Can't get to/from stops or stations by walking
-- Services run too infrequently
-- Not comfortable with other riders/people at stations
-- Public transit travel time is too unreliable
-- Services don't run early/late enough
-
-VTOL aircraft and public buses share two impactful characteristics:
-1) They use predesignated zones for pickup (bus stops and vertipads)
-2) They are largely limited by the number of active vehicles
-
-When pickup zones are sparse, the ability for a passenger to reach a desired destination is severely impacted. Sparse pickup zones also result in further walking. A low number of vehicles can equate to infrequent operation, a pain point given by detractors of public transit. For either of these systems to be considered favorably by prospective riders, a dense distribution of stops and vehicles must exist.
-
-Leaving similarities behind, VTOL networks may address the rest of respondents' concerns with bus systems.
-
-Unlike bus transit networks, VTOL aircraft networks are not predetermined routes. They are point-to-point, meaning that they take riders directly to a requested destination, with a maximum of one or two other stops (similar to a rideshare automobile).
-
-VTOL aircraft also don't encounter road obstacles, traffic lights, stop signs, congestion, or construction zones, reducing commute time to the destination. With proper planning by software systems, a customer may even step directly into a vertiport and onto their flight with no lines or waiting (not taking into account security screening regulations).
-
-#### Decreased Car Ownership and Walkable Cities
-
-[91.5% of U.S. households had at least one vehicle in 2020](https://www.fool.com/the-ascent/research/car-ownership-statistics/). 
-
-[Over 77% of households in Great Britain have a car](https://www.racfoundation.org/wp-content/uploads/2017/11/car-ownership-in-great-britain-leibling-171008-report.pdf).
-
-Car ownership is never-ending torrent of costs. Petrol, insurance, maintenance, repairs, registration fees, not to mention the cost of purchase! If you're one of [the 60% of Americans who live paycheck to paycheck](https://www.cnbc.com/2022/08/01/as-inflation-surges-more-americans-are-living-paycheck-to-paycheck.html), you may have needed an auto loan to purchase your vehicle. Given that [interest rates are inversely related to credit score](https://www.experian.com/blogs/ask-experian/auto-loan-rates-by-credit-score/), and [low credit scores are strongly linked to low income](https://www.federalreserve.gov/econres/notes/feds-notes/are-income-and-credit-scores-highly-correlated-20180813.html), it becomes clear that car ownership preys on low-income individuals. 
-
-Car ownership can also be a necessity. Consider this [statement by the San Diego Workforce Partnership](https://workforce.org/news/transportation-equity-is-about-workforce-equity-too/):
-> Because of the considerable milage and layout of [San Diego County], only 1% of jobs are accessible within 30 minutes by transit and just 8% are accessible in 60 minutes. That means that the 78% of MTS riders who do not have an available car also do not have access to more than 90% of jobs in San Diego. This divide has created economic inequality for many neighborhoods and hampers the ability for low-income communities to create generational wealth.
-
-FIXME
-
-- Rather than building new highways to accommodate more cards, finding ways to decrease traffic. In some cases convert automobile streets to pedestrian walking zones.
-- New neighborhoods designed for walkability with the vertiports nearby
-- The "Walk & Ride" paradigm, reduce the number of cars per capita
 
 #### Expansion of Academic Fields
 
@@ -495,27 +470,53 @@ A new method of transportation has the power to redefine the human experience. I
 
 ## 8.0 Risks and Potential Issues
 
-### Community Adoption
+### Struggles of Public Transit
 
-Especially in early phases with limited vertiport and aircraft, rideshares and charters will possibly charge a premium in order to fund further capital investment in the VTOL network. These premiums would largely dissipate with increased access and vertiport competition. However, it would be honest to postulate that a socioeconomic disparity in ridership could be present in early operations.
+Consider the top reasons why respondents avoided public transit in a [2019 Opinion Survey of Transit in San Diego, California, U.S.A.](https://www.sandag.org/uploads/publicationid/publicationid_4649_27278.pdf):
+> - System not complete enough/not in my area/can't reach destination
+> - Public transit is too slow
+> - Have other errands I need to do that require a car
+> - Can't get to/from stops or stations by walking
+> - Services run too infrequently
+> - Not comfortable with other riders/people at stations
+> - Public transit travel time is too unreliable
+> - Services don't run early/late enough
 
-It is not Arrow's intention to solely market to high-income persons. An affordable point-to-point transit solution stands to benefit everyone. [The average U.S. citizen spends more than half their income on housing and transportation](https://www.transportation.gov/mission/health/housing-and-transportation-affordability#transportationandhealthconnection). This statistic is felt even more keenly by low-income communities.
+These opinions touch on the main limitations of a public transit system:
+1) Vehicles are limited to specific zones for pickup
+2) Vehicles are limited to specific routes, sometimes unalterable (light rail)
+3) Throughput is limited by the number and capacity of vehicles in circulation
+4) Safety concerns from other riders who aren't behaving civilly
 
-It is critical to motivate high-income individuals to habitually use VTOL services as well. Affluential individuals have significant capacity to influence local policy regarding transport and zoning.
+Limited pickup zones can mean significant walking for prospective passengers. If the weather is hot or one is carrying groceries, an air-conditioned car ride from door-to-door may seem optimal in comparison. 
 
-Especially in regions with notable economic disparity, public transit can often become associated low-income or impoverished riders. In San Diego, California, U.S.A., [nearly 3/5ths of metropolitan bus riders in 2018 earned less than $50,000 a year](https://workforce.org/news/transportation-equity-is-about-workforce-equity-too/). Attitudes toward the poor are often visited on the concept of public transit by middle and high income individuals, resulting in negative biases about the safety and cleanliness of bus and trolley systems.
+Limited routes are also a serious problem afflicting ridership. Consider this [other San Diego statistic, reported by the Workforce Partnership](https://workforce.org/news/transportation-equity-is-about-workforce-equity-too/):
+> Because of the considerable milage and layout of [San Diego County], only 1% of jobs are accessible within 30 minutes by transit and just 8% are accessible in 60 minutes. That means that the 78% of MTS riders who do not have an available car also do not have access to more than 90% of jobs in San Diego. This divide has created economic inequality for many neighborhoods and hampers the ability for low-income communities to create generational wealth.
 
-Arrow seeks to serve individuals of all socioeconomic backgrounds, to avoid negative biases in either direction.
+To an extent, VTOL networks are also affected by these factors. VTOL aircraft are limited to specific landing zones ("vertiports") which may be even more sparsely distributed than transit stops. They also don't carry as many passengers as a train, trolley, or bus. An insufficient quantity of vehicles or vertiports renders VTOL benefits inconsequential when rider demand can't be met.
 
-### Lobbying
+Ideally, aircraft circulation should seek to guarantee rider maximum wait times of less than 10 minutes, [the threshold at which prospective public bus transit ridership steeply drops](https://www.scirp.org/journal/paperinformation.aspx?paperid=95820#t1). In regards to vertiport placement, a [2019 study in Munich, Germany](https://www.emerald.com/insight/content/doi/10.1108/SASBE-07-2017-0031/full/html#sec004) found that interest in public transit drops significantly when walking time exceeds 15 minutes. With both of these studies, dropoff in interest is not linear; there is a near-binary threshold at which public interest abruptly shifts.
 
-Government cooperation will be critical to the success of Arrow Services.
+### Socioeconomic Disparity in Early Ridership
 
-Lobbies may seek to corner the market on VTOL operations, seeking legislation to push out independent Providers of Services.
+Especially in early phases with limited vertiport and aircraft, rideshares and charters will possibly charge a premium in order to fund further capital investment in the VTOL network. These premiums are planned to dissipate with increased access and vertiport competition. However, it would be honest to postulate that a socioeconomic disparity in ridership could be present in early operations.
 
-Lobbies may seek to fight the rise in UAM, as it cuts into the margins of petrol producers.
+It is not Arrow's intention to solely market to high-income persons. In the long term, it is critical that all individuals spanning the income spectrum continue to choose VTOL services over automobiles. Politically, the support of affluent individuals and the popular vote of middle-to-lower income riders will be critical to establishing more vertiports and increasing rider throughput. Ethically and morally, it is incumbent that new and better transit solutions are offered equally to individuals of all socioeconomic status. Given that VTOL networks are an economic gateway, failure to do so would be a direct contribution to wealth inequality.
 
-TODO: Explore.
+### Political Opposition
+
+In every country there will exist political opposition to VTOL services. 
+
+Potential opponents could include:
+- Petrol & Gas, Automotive:
+  - Electric UAM operations may reduce reliance on the automobile
+- Real Estate & Homeowners Associations:
+  - [NIMBY](https://en.wikipedia.org/wiki/NIMBY) - "Not in my backyard"
+  - Sound concerns
+  - Expanding access to public transit is not always desired by middle-and-upper class neighborhoods
+- Taxi Driver Unions
+- Environmental Lobbies
+  - Impact on wildlife
 
 ### Anonymous Contribution
 
