@@ -44,12 +44,13 @@ The Arrow Software Services are broken into several domains of responsibility.
 ```mermaid
 graph TB
 
-subgraph Provider of Services
+subgraph p[Provider of Services]
 	sched[svc-scheduler]
 	dcvr[svc-discovery]
 	com[svc-compliance]
 	guid[svc-guidance]
 end
+
 ```
 ```mermaid
 graph TB
@@ -82,9 +83,9 @@ end
 
 > "Supplemental Data and Services Provider (SDSP): UAM Operators and PSUs use Supplemental Data Service Providers (SDSPs) to access supporting data including, but not limited to, terrain, obstacle, aerodrome availability, and weather. SDSPs may be accessed via the PSU network or directly by UAM operators." - [UAM Airspace Research Roadmap](https://ntrs.nasa.gov/citations/20210019876)
 
-**Rideshare and Cargo Services** elements are client-facing and not safety-critical.
+**Rideshare and Cargo Services** elements are client-facing and not essential. Downtime of these services doesn't impact airspace management or passenger safety.
 
-Description of the individual services is covered in section 3.2.
+Descriptions of the individual services are covered in section 3.2.
 
 ## 2.0 Documents
 ### 2.1 Applicable Resources
@@ -129,7 +130,7 @@ Service | Responsibilities
 
 #### Supplemental Data and Service Provider (SDSP) Elements
 
-These elements provide *supplemental* (not safety critical) services for UAM operations.
+These elements provide *supplemental* (non-essential) services for UAM operations.
 
 <center> 
 
@@ -144,7 +145,7 @@ Service | Responsibilities
 <sup>*</sup> May qualify as a PSU element.
 #### Rideshare and Cargo Services
 
-These are client-facing services which expose an API. These are not safety-critical.
+These are client-facing services exposing an API. They handle transactions with customers and are not essential to the operation of the PSU.
 
 <center> 
 
@@ -154,7 +155,7 @@ Service | Responsibilities
 `svc-cargo` | The public API for clients to request cargo transport through Arrow Services
 `svc-charter`| The public API for individuals filing charters for specific aircraft.
 `svc-payment` | Payment processing, accepting traditional payments and cryptocurrencies.
-`svc-contact` | In all other parts of the system, a customer is an integer ID<br>This service has sole access to customer information, the interface to issue notifications to a client
+`svc-contact` | This service has sole access to customer information, the interface to issue notifications to a client
 
 </center> 
 
@@ -233,7 +234,7 @@ tlm --> gcs
 `svc-storage`:
 - Links to multiple storage solutions, paired with specific types of data.
 - Blockchain storage provides defensive "immutable" record keeping for certifications, maintenance records, previous flight plans, FAA confirmations.
-- SQL databases for CRUD operations on flight plans
+- Databases for CRUD operations on flight plans
 - Storage may be local to the services or on a cloud server.
 
 
@@ -298,7 +299,7 @@ Modes of operation correspond with a general fleet routing behavior. They indica
 Mode | Description
 --- | ---
 Nominal | New flight plans may be created if they can be accommodated.<br>Optimize rideshare flights to maximize passengers per aircraft.<br>Optimize flight graph to accommodate more flights per hour.<br>A buzzing flight graph maximizing motion.
-Wind Down | No new flights plans are accepted (save for municipal and emergency flights) for a given time frame.<br>Confirmed flight plans execute as previously planned.<br>Can still add new rideshare passengers to existing flight plans.<br>May occur daily to close flight operations if services are not 24/7.<br>"Chokes" a flight graph to reduce the level of activity.
+Wind Down | No new flights plans are accepted (save for municipal and emergency flights) for a given time frame.<br>Confirmed flight plans execute as previously planned.<br>Can still add new rideshare passengers to existing flight plans.<br>May occur daily to close flight operations if services are not 24/7.<br>"Throttles" a flight graph to reduce the level of activity.
 Emergency No-Fly | All aerial operations must cease at earliest opportunity, even if arrival vertiport is different than planned.<br>Improvised landing zones are authorized at this stage to handle vertiport overflow.<br>All live aircraft in the flight graph immediately "seek cover" at the nearest safe haven.
 
 </center> 
@@ -351,7 +352,7 @@ Temporary downtime of SDSP services is tolerable to an extent. Ultimately a pilo
 These services are not mission-critical, nor do they require sub-second response times. One set of rideshare and cargo services may serve multiple regions, depending on user request load. This will be determined through beta testing and simulation.
 
 #### Physical Server Considerations
-Coordinating the movements of thousands of aerial actors over an urban environment is akin to knife juggling in a crowd, in that any interruption of the software services can result in catastrophic consequences. Preventative measures should be taken to ensure continued uptime in the event of physical (and cyber) dangers to server operation.
+Coordinating the movements of thousands of aerial actors over an urban environment is akin to knife juggling in a crowd, in that any interruption of the software services can result in catastrophic consequences. Preventative measures should be taken to ensure continued uptime in the event of physical (and cyber) dangers to server operations.
 
 These possibly include:
 - Energy-storing devices (such as mechanical flywheels) placed between the power grid and critical hardware components
