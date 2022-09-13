@@ -75,7 +75,7 @@ Maintainer(s) | @arrow-air/services
 
 ## 1.0 Project Description
 
-### 1.0.1 Background
+### 1.0.1 Motivation
 
 The electric vertical takeoff and landing (eVTOL) aircraft is poised to revolutionize transport. In an urban environment plagued by congested roadways, costly infrastructure, and socioeconomic inequality, eVTOL networks offer an attractive solution: rapid, on-demand, point-to-point transit that flies above and beyond the competition. Boasting significantly less construction and maintenance costs than roadways - and far less environmental disruption - VTOL networks promise to outperform all other modes of travel in terms of affordability, accessibility, comfort, and speed. Urban aerial mobility (UAM) markets are set to expand dramatically within the next few years, with initial flights expected as early as 2026.
 
@@ -100,35 +100,52 @@ The Arrow Software Services are broken into several domains of responsibility.
 
 ```mermaid
 graph TB
+classDef subgraph_padding fill:none,stroke:none
 
-subgraph p[Provider of Services]
-	sched[svc-scheduler]
-	dcvr[svc-discovery]
-	com[svc-compliance]
-	guid[svc-guidance]
+subgraph Provider of Services
+    subgraph p [ ]
+        sched[svc-scheduler]
+        dcvr[svc-discovery]
+        com[svc-compliance]
+        guid[svc-guidance]
+    end
 end
 
+class p subgraph_padding
 ```
 ```mermaid
 graph TB
+classDef subgraph_padding fill:none,stroke:none
 
 subgraph Supplemental Data and Service Provider
+    subgraph p [ ]
+
 	stor[svc-storage]
 	tlm[svc-telemetry]
 	upk[svc-upkeep]
+
+    end
 end
+
+class p subgraph_padding
 ```
 
 ```mermaid
 
 graph TB
 subgraph Arrow Rideshare & Cargo Services
+classDef subgraph_padding fill:none,stroke:none
+
+    subgraph p [ ]
 	share[svc-rideshare]
 	cargo[svc-cargo]
     charter[svc-charter]
 	pay[svc-payment]
 	contact[svc-contact]
+    end
 end
+
+class p subgraph_padding
 ```
 </center> 
 
@@ -225,12 +242,15 @@ This section describes the interfaces of the system with any other systems that 
 
 ```mermaid
 flowchart TD
+classDef subgraph_padding fill:none,stroke:none
 
-subgraph Provider of Services
+subgraph psu [Provider of Services]
+subgraph p [ ]
 	sched[svc-scheduler]
 	guid[svc-guidance]
 	dcvr[svc-discovery]
 	com[svc-compliance]
+end
 end
 
 port[Vertiport Operator]
@@ -240,6 +260,8 @@ psus{Other PSUs} <--> dcvr
 guid --> pilot(UAM Pilot)
 sched <--> pilot
 sched <--> port
+
+class p subgraph_padding
 ```
 
 </center> 
@@ -267,12 +289,15 @@ sched <--> port
 <center> 
 
 ```mermaid
-
 flowchart BT
+classDef subgraph_padding fill:none,stroke:none
+
 subgraph Supplemental Data and Service Providers
+subgraph p [ ]
 	stor[svc-storage]
 	tlm[svc-telemetry]
 	upk[svc-upkeep]
+end
 end
 
 gcs{Ground Control/<br>Air Traffic Control<br>Interfaces}
@@ -280,6 +305,7 @@ vehicle[UAM Vehicle] -- Telemetry --> tlm
 stor <--> cloud{Cloud Storage}
 tlm --> gcs
 
+class p subgraph_padding
 ```
 
 </center> 
@@ -301,12 +327,16 @@ tlm --> gcs
 
 ```mermaid
 flowchart TB
+classDef subgraph_padding fill:none,stroke:none
+
 subgraph Rideshare and Cargo
+subgraph p [ ]
 	share[svc-rideshare]
 	cargo[svc-cargo]
     charter[svc-charter]
 	pay[svc-payment]
 	contact[svc-contact]
+end
 end
 
 customer[Client App] <--> share
@@ -314,6 +344,8 @@ customer <--> cargo
 customer <--> charter
 customer <--> pay
 contact --> customer
+
+class p subgraph_padding
 ```
 </center> 
 
