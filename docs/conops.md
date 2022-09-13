@@ -12,67 +12,6 @@ Maintainer(s) | @arrow-air/services
 
 :exclamation: This document is intended for internal use.
 
-## Table of Contents
-
-<!-- TOC -->
-
-- [Table of Contents](#table-of-contents)
-- [Project Description](#project-description)
-    - [Background](#background)
-    - [Assumptions and Constraints](#assumptions-and-constraints)
-- [Overview of the Envisioned System](#overview-of-the-envisioned-system)
-    - [Overview](#overview)
-- [Documents](#documents)
-    - [Applicable Resources](#applicable-resources)
-- [Description of Envisioned System](#description-of-envisioned-system)
-    - [Needs, Goals and Objectives of Envisioned System](#needs-goals-and-objectives-of-envisioned-system)
-- [Overview of System and Key Elements](#overview-of-system-and-key-elements)
-    - [Provider of Services PSU Elements](#provider-of-services-psu-elements)
-    - [Supplemental Data and Service Provider SDSP Elements](#supplemental-data-and-service-provider-sdsp-elements)
-        - [Rideshare and Cargo Services](#rideshare-and-cargo-services)
-- [External Interfaces](#external-interfaces)
-    - [PSU Interfaces](#psu-interfaces)
-    - [SDSP Interfaces](#sdsp-interfaces)
-    - [Rideshare and Cargo Interfaces](#rideshare-and-cargo-interfaces)
-- [Proposed Capabilities](#proposed-capabilities)
-- [Modes of Operations](#modes-of-operations)
-- [Operational Scenarios, Use Cases and/or Design Reference Missions](#operational-scenarios-use-cases-andor-design-reference-missions)
-- [Nominal & Off-Nominal Conditions](#nominal--off-nominal-conditions)
-- [Physical Environment](#physical-environment)
-    - [PSU Locations](#psu-locations)
-    - [SDSP Locations](#sdsp-locations)
-    - [Rideshare and Cargo Services Locations](#rideshare-and-cargo-services-locations)
-    - [Physical Server Considerations](#physical-server-considerations)
-- [Support Environment](#support-environment)
-- [Impact Considerations](#impact-considerations)
-- [Environmental Impacts](#environmental-impacts)
-    - [Benefits](#benefits)
-    - [Drawbacks](#drawbacks)
-- [Organizational Impacts](#organizational-impacts)
-    - [Vertiport Operators](#vertiport-operators)
-    - [UAM Controllers aka Fleet Operators](#uam-controllers-aka-fleet-operators)
-    - [Aviation Mechanics](#aviation-mechanics)
-    - [System Administrators and IT Services](#system-administrators-and-it-services)
-    - [Government Liaisons](#government-liaisons)
-    - [Legal](#legal)
-    - [Public Relations](#public-relations)
-- [Technical Impacts](#technical-impacts)
-    - [A New Economy](#a-new-economy)
-    - [Municipal Budget](#municipal-budget)
-    - [Your Budget](#your-budget)
-    - [Stronger Connections with Suburban and Rural Regions](#stronger-connections-with-suburban-and-rural-regions)
-    - [Expansion of Academic Fields](#expansion-of-academic-fields)
-- [Risks and Potential Issues](#risks-and-potential-issues)
-    - [Struggles of Public Transit](#struggles-of-public-transit)
-    - [Socioeconomic Disparity in Early Ridership](#socioeconomic-disparity-in-early-ridership)
-    - [Political Opposition](#political-opposition)
-    - [Anonymous Contribution](#anonymous-contribution)
-    - [International Contributors](#international-contributors)
-- [Citations](#citations)
-- [Appendix A: Acronyms & Glossary](#appendix-a-acronyms--glossary)
-
-<!-- /TOC -->
-
 ## 1.0 Project Description
 
 ### 1.0.1 Motivation
@@ -162,7 +101,7 @@ class p subgraph_padding
 Descriptions of the individual services are covered in section 3.2.
 
 ## 2.0 Documents
-### 2.1 Applicable Resources
+### 2.0.1 Applicable Resources
 
 | Resource | Type |
 | --- | --- |
@@ -172,7 +111,7 @@ Descriptions of the individual services are covered in section 3.2.
 
 ## 3.0 Description of Envisioned System
 
-### 3.1 Needs, Goals and Objectives of Envisioned System
+## 3.1 Needs, Goals and Objectives of Envisioned System
 Each service in this architecture is associated with a set of requirements.
 
 Each service has its own set of documents which should be referred to for more detailed information. These documents include:
@@ -185,7 +124,7 @@ A set of user stories for rideshare and cargo operations is currently tracked on
 
 ## 3.2 Overview of System and Key Elements
 
-### Provider of Services (PSU) Elements
+### 3.2.1 Provider of Services (PSU) Elements
 
 These services enable UAM operators to access airspace legally, safely, and securely.
 
@@ -202,7 +141,7 @@ Service | Responsibilities
 
 </center> 
 
-### Supplemental Data and Service Provider (SDSP) Elements
+### 3.2.2 Supplemental Data and Service Provider (SDSP) Elements
 
 These elements provide *supplemental* (non-essential) services for UAM operations.
 
@@ -217,7 +156,7 @@ Service | Responsibilities
 </center>
 
 <sup>*</sup> May qualify as a PSU element.
-#### Rideshare and Cargo Services
+### 3.2.3 Rideshare and Cargo Services
 
 These are client-facing services exposing an API. They handle transactions with customers and are not essential to the operation of the PSU.
 
@@ -236,7 +175,7 @@ Service | Responsibilities
 ## 3.3 External Interfaces
 This section describes the interfaces of the system with any other systems that are external to the project. Interfaces *between* services are not shown in these diagrams.
 
-### PSU Interfaces
+### 3.3.1 PSU Interfaces
 
 <center> 
 
@@ -284,7 +223,7 @@ class p subgraph_padding
 - Calculating flight paths will be increasingly important as the number of simultaneous airborne UAM vehicles increases.
 - Flight paths are chosen at the discretion of the Pilot in Control (PIC). Suggested flight paths from this service should be taken into consideration when planning the general route.
 
-### SDSP Interfaces
+### 3.3.2 SDSP Interfaces
 
 <center> 
 
@@ -321,7 +260,7 @@ class p subgraph_padding
 - Storage may be local to the services or on a cloud server.
 
 
-### Rideshare and Cargo Interfaces
+### 3.3.3 Rideshare and Cargo Interfaces
 
 <center> 
 
@@ -423,24 +362,24 @@ Existing documents in this realm include:
 
 The physical environment of these services is a set of servers. The location of the servers depends on the services.
 
-### PSU Locations
+### 5.0.1 PSU Locations
 Provider of Service (PSU) elements will be replicated per region, meaning each region with Arrow operations should host a local physical server. This is to minimize communication delay to aerial actors within the region of operation and to reduce the load on each service by filtering out other regions. 
 
 For example, a city will have its own `svc-scheduler` instance that only manages the airspace and vertiport schedules of that city's region. Cross-region transfers will be negotiated through the city's PSU interface (`svc-discovery`) and the destination region's PSU interface (which may be another `svc-discovery`, if the destination PSU is based on Arrow Services).
 
 PSU services are *safety-critical* and must continue to execute as long as there are aerial operations occurring. Downtime of the `svc-scheduler` in particular can produce unfavorable conditions for pilots, who would no longer be notified of vertiport schedules.
 
-### SDSP Locations
+### 5.0.2 SDSP Locations
 Supplemental Data and Service Provider (SDSP) elements may also be deployed per region. 
 
 As UAM actors may downlink terabytes of telemetry daily, `svc-telemetry` is a strong candidate for a per-region deployment, as is `svc-storage` for the same reason. Local UAM operators using Air Traffic Control and Ground Control System software may rely on rapid telemetry updates and storage read operations.
 
 Temporary downtime of SDSP services is tolerable to an extent. Ultimately a human pilot is still responsible for flying and landing an aircraft safely.
 
-### Rideshare and Cargo Services Locations
+### 5.0.3 Rideshare and Cargo Services Locations
 These services are not mission-critical, nor do they require sub-second response times. One set of rideshare and cargo services may serve multiple regions, depending on user request load. This will be determined through beta testing and simulation.
 
-### Physical Server Considerations
+### 5.0.4 Physical Server Considerations
 Coordinating the movements of thousands of aerial actors over an urban environment is akin to knife juggling in a crowd, in that any interruption of the software services can result in catastrophic consequences. Preventative measures should be taken to ensure continued uptime in the event of physical (and cyber) dangers to server operations.
 
 These possibly include:
@@ -465,7 +404,7 @@ An authorized individual should be onsite (or nearby) at every server location d
 
 This section limits discussion to Arrow software services which enable rideshares, cargo operations, and numerous simultaneous aerial actors.
 
-### Benefits
+### 7.1.1 Benefits
 
 In a typical automobile journey, energy is wasted following inefficient and indirect paths to the destination: climbing winding grades, routing through a bridge, ferry, or tunnel, idling in traffic, waiting out timed lights. Low in comparison are the carbon emissions of a direct eVTOL flight, which suffers few of the same logistics troubles as grounded vehicles.
 
@@ -475,7 +414,7 @@ New roads and highways are expensive to build, both in financial and environment
 
 VTOL aircraft operations require substantially less physical infrastructure and maintenance in comparison. Flying at an altitude above the treeline, VTOL aircraft operations leave the landscape untouched between the points of travel. Vertipads boast a relatively minimal footprint, and are easier and faster to build and maintain than miles of road. On this count, point-to-point aerial travel would connect communities far more cheaply, sustainably, and quickly than ground transit. The savings become more pronounced with time, as maintenance costs are also significantly lower. While a future without roads is surpassingly distant, VTOL routes present a strong case for new connections, especially where geographical barriers (such as hills, rivers, bogs) and restricted municipal budgets are concerned.
 
-### Drawbacks
+### 7.1.2 Drawbacks
 
 Early tests indicate that [VTOL aircraft have a lower takeoff decibel rating than a helicopter](https://ntrs.nasa.gov/citations/20220006729). Even so, the combination of hundreds of drones and aircraft could make a noticeable contribution to urban noise.
 
@@ -483,7 +422,7 @@ The effects of increased VTOL aerial operations on wildlife should be researched
 
 ## 7.2 Organizational Impacts
 
-### Vertiport Operators
+### 7.2.1 Vertiport Operators
 
 Vetiports can be owned by independent entities. Arrow will require certain standards be met for a vertiport to be supported by the Arrow PSU.
 
@@ -493,7 +432,7 @@ Only specific persons in the Arrow database can conduct pre-flight inspections a
 
 Periodic inspections will occur, conducted through an independent agency or a rotating team of Arrow officials. The details of the inspection will be stored immutably (uneditable) and will include the name of the inspector and agency for public review.
 
-### UAM Controllers (aka Fleet Operators)
+### 7.2.2 UAM Controllers (aka Fleet Operators)
 
 Above vertiport operators in the chain of command is the UAM controller.
 
@@ -503,7 +442,7 @@ The UAM controller utilizes air traffic control (ATC) software to monitor aerial
 
 Fleet operators may employ dispatchers who work in a similar capacity.
 
-### Aviation Mechanics
+### 7.2.3 Aviation Mechanics
 
 Aviation mechanic certification is offered by some civil aviation authorities, such as ["FAA-certificated Aviation Maintenance Technicians (AMT)"](https://www.faa.gov/mechanics/become).
 
@@ -513,23 +452,23 @@ Alternatively, maintenance vertiports may be completely shared. A certified mech
 
 Certified mechanics may set up their own vertiports on the Arrow PSU, similar to automobile repair shops. A dedicated vertiport operator is still required in this case. Collective ownership of a vertiport by multiple attached mechanic shops is allowed and encouraged.
 
-### System Administrators and IT Services
+### 7.2.4 System Administrators and IT Services
 Servers and onsite tech support.
 
-### Government Liaisons
+### 7.2.5 Government Liaisons
 
 Consultants or part-time government liaisons will be required to communicate with civil aviation authorities, especially in countries where English is not the primary business language.
 
-### Legal
+### 7.2.6 Legal
 
 Handle suits against the Arrow Services. Crisis management, prevention. Adherence to local civil aviation laws. Submission of appropriate paperwork.
 
-### Public Relations
+### 7.2.7 Public Relations
 
 Design, advertising, community outreach, rider surveys.
 
 ## 7.3 Technical Impacts
-### A New Economy
+### 7.3.1 A New Economy
 
 eVTOL aircraft herald a wave of new jobs and economic opportunities. Among which are big ticket items like research, manufacturing, software development, materials testing, certification, maintenance, repair, and functional vertiport design.
 
@@ -537,34 +476,34 @@ Economic opportunity may ripple outwards from vertiports. They may be epicenters
 
 Urban drone delivery operations, which will cooperate with VTOL aircraft on the same network, will enable new logistics and last-mile transport businesses.
 
-### Municipal Budget
+### 7.3.2 Municipal Budget
 
 The cost to establish a new transit route with VTOLs is significantly lower than traditional transit. Already touched on in "Environmental Impacts" is the low cost of building and maintaining new VTOL network routes - specifically, the cost of a vertiport.
 
 New routes to isolated locations can be established the moment that a vertipad is established. No tramways, rails, roads, tunnels, bridges, or highways need to be built. This holds when extending the definition of "isolated" to automobile-only areas where public transit is not located within 30 minutes of walking. No dedicated vehicles, timetables, or staff need to be planned by the city, unlike a bus system. A vertiport added to the system is simply one more place an individual can choose to travel on-demand. This also means less deadhead (no passenger) operation than buses; routes are only active when there are passengers to fly them.
 
-### Your Budget
+### 7.3.3 Your Budget
 
-An affordable point-to-point transit alternative stands to benefit everyone. Take for example [the average U.S. citizen, who spends more than half their income on housing and transportation](https://www.transportation.gov/mission/health/housing-and-transportation-affordability#transportationandhealthconnection). This is a statistic felt even more keenly by low-income communities, and is due in large part to the cost of car ownership.
+An affordable point-to-point transit alternative stands to benefit everyone. Take for example [the average U.S. citizen, who spends more than half their income on housing and transportation](https://www.transportation.gov/mission/health/housing-and-transportation-affordability#transportationandhealthconnection). This is a statistic felt even more keenly by low-income communities and is due in large part to the cost of car ownership.
 
 The average car owner sees a large portion of their budget going to petrol, insurance, maintenance, repairs, registration fees, and payments toward the cost of purchase. This grows worse for the impoverished when auto loans are involved. Given that [interest rates are inversely related to credit score](https://www.experian.com/blogs/ask-experian/auto-loan-rates-by-credit-score/), and [low credit scores are strongly linked to low income](https://www.federalreserve.gov/econres/notes/feds-notes/are-income-and-credit-scores-highly-correlated-20180813.html), it becomes clear that car ownership is especially taxing on low-income individuals (if they manage to secure a loan at all).
 
 To make issues worse, car ownership is necessary for many individuals to hold a job. Consider this [statement by the San Diego Workforce Partnership](https://workforce.org/news/transportation-equity-is-about-workforce-equity-too/):
 > Because of the considerable milage and layout of [San Diego County], only 1% of jobs are accessible within 30 minutes by transit and just 8% are accessible in 60 minutes. That means that the 78% of MTS riders who do not have an available car also do not have access to more than 90% of jobs in San Diego. This divide has created economic inequality for many neighborhoods and hampers the ability for low-income communities to create generational wealth.
 
-An affordable, safe, fast, and point-to-point transport system with low infrastructure costs is a strong contender for commuting, especially to new areas not yet covered by public transit. It has the potential to save commuters from substantial automobile costs, which would drastically improve the quality of life for many.
+An affordable, safe, fast, and point-to-point transport system with low infrastructure costs is a strong contender for commuting, especially to new areas not yet covered by public transit. It has the potential to save commuters from substantial automobile costs, which would drastically improve quality of life for many.
 
-### Stronger Connections with Suburban and Rural Regions
+### 7.3.4 Stronger Connections with Suburban and Rural Regions
 
 Consider the example of Native American reservations, which often experience [geographical isolation and reduced access to economic opportunities](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6699168/). An on-demand aerial transport solution, to which geographical barriers are largely a non-issue, has the potential to strengthen ties with these regions by increasing access and cutting commute time for all passengers involved.
 
-### Expansion of Academic Fields
+### 7.3.5 Expansion of Academic Fields
 
 A new method of transportation has the power to redefine the human experience. It will open new chapters of sociology, ecology, economics, architecture, and urban planning. VTOL networks will affect our rooftops, our wallets, local wildlife, climate, and our connectivity to others.
 
 ## 8.0 Risks and Potential Issues
 
-### Struggles of Public Transit
+### 8.0.1 Struggles of Public Transit
 
 Consider the top reasons why respondents avoided public transit in a [2019 Opinion Survey of Transit in San Diego, California, U.S.A.](https://www.sandag.org/uploads/publicationid/publicationid_4649_27278.pdf):
 > - System not complete enough/not in my area/can't reach destination
@@ -591,13 +530,13 @@ To an extent, VTOL networks are also affected by these factors. VTOL aircraft ar
 
 Ideally, aircraft circulation should seek to guarantee rider maximum wait times of less than 10 minutes, [the threshold at which prospective public bus transit ridership steeply drops](https://www.scirp.org/journal/paperinformation.aspx?paperid=95820#t1). In regards to vertiport placement, a [2019 study in Munich, Germany](https://www.emerald.com/insight/content/doi/10.1108/SASBE-07-2017-0031/full/html#sec004) found that interest in public transit drops significantly when walking time exceeds 15 minutes. With both of these studies, dropoff in interest is not linear; there is a near-binary threshold at which public interest abruptly shifts.
 
-### Socioeconomic Disparity in Early Ridership
+### 8.0.2 Socioeconomic Disparity in Early Ridership
 
 Especially in early phases with limited vertiport and aircraft, rideshares and charters will possibly charge a premium in order to fund further capital investment in the VTOL network. These premiums are planned to dissipate with increased access and vertiport competition. However, it would be honest to postulate that a socioeconomic disparity in ridership could be present in early operations.
 
 It is not Arrow's intention to solely market to high-income persons. In the long term, it is critical that all individuals spanning the income spectrum continue to choose VTOL services over automobiles. Politically, the support of affluent individuals and the popular vote of middle-to-lower income riders will be critical to establishing more vertiports and increasing rider throughput. Ethically and morally, it is incumbent that new and better transit solutions are offered equally to individuals of all socioeconomic status. Given that VTOL networks are an economic gateway, failure to do so would be a direct contribution to wealth inequality.
 
-### Political Opposition
+### 8.0.3 Political Opposition
 
 In every country there will exist political opposition to VTOL services. 
 
@@ -612,13 +551,13 @@ Potential opponents could include:
 - Environmental Lobbies
   - Impact on wildlife
 
-### Anonymous Contribution
+### 8.0.4 Anonymous Contribution
 
-Arrow is an open source ecosystem with many anonymous international contributors. It is understood that some government systems place restrictions on non-citizen developers or require identity verification. Arrow will be seeking guidance from regulatory bodies on this matter.
+Arrow is an open-source ecosystem with many anonymous international contributors. It is understood that some government systems place restrictions on non-citizen developers or require identity verification. Arrow will be seeking guidance from regulatory bodies on this matter.
 
 As it stands, Arrow has a strict set of rules in place to ensure trustworthy contributions to the codebase.
 
-Arrow requires multiple "code owner" approvals before code can be contributed. Code owners are admin of the Arrow software teams and have substantial personal involvement with the Arrow codebase. The codebase does not allow contributions without proper approvals, even changes from admin themselves.
+Arrow requires multiple "code owner" approvals before code can be contributed. Code owners are administrators of the Arrow software teams and have substantial personal involvement with the Arrow codebase. The codebase does not allow contributions without proper approvals, even changes from admin themselves.
 
 Arrow requires contributors to "sign" changes using a cryptographic signature (GPG). The signature indicates that a single individual's account is responsible for all changes made in their name. The Arrow code repositories will automatically reject unsigned changes.
 
@@ -626,16 +565,16 @@ Online ID verification services can be used to verify identities while preservin
 
 In addition to official security audits, Arrow will periodically offer public bounties for documented exploits. The white hat hacker community's help will be invaluable in securing our services and demonstrating our commitment to cyber security.
 
-### International Contributors
+### 8.0.5 International Contributors
 
-We will be seeking guidance from NASA, FAA, EASA, and other regional agencies regarding "foreign" contributors and restrictions to non-citizens.
+We will be seeking guidance from NASA, FAA, EASA, and other regional agencies regarding "foreign" contributors and restrictions on non-citizens.
 
 
-## Citations
+## Appendix A: Citations
 
 TODO
 
-## Appendix A: Acronyms & Glossary
+## Appendix B: Acronyms & Glossary
 
 See the [Arrow Glossary](https://www.arrowair.com/docs/documentation/glossary).
 
