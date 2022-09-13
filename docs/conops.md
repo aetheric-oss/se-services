@@ -12,9 +12,70 @@ Maintainer(s) | @arrow-air/services
 
 :exclamation: This document is intended for internal use.
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Table of Contents](#table-of-contents)
+- [Project Description](#project-description)
+    - [Background](#background)
+    - [Assumptions and Constraints](#assumptions-and-constraints)
+- [Overview of the Envisioned System](#overview-of-the-envisioned-system)
+    - [Overview](#overview)
+- [Documents](#documents)
+    - [Applicable Resources](#applicable-resources)
+- [Description of Envisioned System](#description-of-envisioned-system)
+    - [Needs, Goals and Objectives of Envisioned System](#needs-goals-and-objectives-of-envisioned-system)
+- [Overview of System and Key Elements](#overview-of-system-and-key-elements)
+    - [Provider of Services PSU Elements](#provider-of-services-psu-elements)
+    - [Supplemental Data and Service Provider SDSP Elements](#supplemental-data-and-service-provider-sdsp-elements)
+        - [Rideshare and Cargo Services](#rideshare-and-cargo-services)
+- [External Interfaces](#external-interfaces)
+    - [PSU Interfaces](#psu-interfaces)
+    - [SDSP Interfaces](#sdsp-interfaces)
+    - [Rideshare and Cargo Interfaces](#rideshare-and-cargo-interfaces)
+- [Proposed Capabilities](#proposed-capabilities)
+- [Modes of Operations](#modes-of-operations)
+- [Operational Scenarios, Use Cases and/or Design Reference Missions](#operational-scenarios-use-cases-andor-design-reference-missions)
+- [Nominal & Off-Nominal Conditions](#nominal--off-nominal-conditions)
+- [Physical Environment](#physical-environment)
+    - [PSU Locations](#psu-locations)
+    - [SDSP Locations](#sdsp-locations)
+    - [Rideshare and Cargo Services Locations](#rideshare-and-cargo-services-locations)
+    - [Physical Server Considerations](#physical-server-considerations)
+- [Support Environment](#support-environment)
+- [Impact Considerations](#impact-considerations)
+- [Environmental Impacts](#environmental-impacts)
+    - [Benefits](#benefits)
+    - [Drawbacks](#drawbacks)
+- [Organizational Impacts](#organizational-impacts)
+    - [Vertiport Operators](#vertiport-operators)
+    - [UAM Controllers aka Fleet Operators](#uam-controllers-aka-fleet-operators)
+    - [Aviation Mechanics](#aviation-mechanics)
+    - [System Administrators and IT Services](#system-administrators-and-it-services)
+    - [Government Liaisons](#government-liaisons)
+    - [Legal](#legal)
+    - [Public Relations](#public-relations)
+- [Technical Impacts](#technical-impacts)
+    - [A New Economy](#a-new-economy)
+    - [Municipal Budget](#municipal-budget)
+    - [Your Budget](#your-budget)
+    - [Stronger Connections with Suburban and Rural Regions](#stronger-connections-with-suburban-and-rural-regions)
+    - [Expansion of Academic Fields](#expansion-of-academic-fields)
+- [Risks and Potential Issues](#risks-and-potential-issues)
+    - [Struggles of Public Transit](#struggles-of-public-transit)
+    - [Socioeconomic Disparity in Early Ridership](#socioeconomic-disparity-in-early-ridership)
+    - [Political Opposition](#political-opposition)
+    - [Anonymous Contribution](#anonymous-contribution)
+    - [International Contributors](#international-contributors)
+- [Citations](#citations)
+- [Appendix A: Acronyms & Glossary](#appendix-a-acronyms--glossary)
+
+<!-- /TOC -->
+
 ## 1.0 Project Description
 
-#### 1.0.1 Background
+### 1.0.1 Background
 
 The electric vertical takeoff and landing (eVTOL) aircraft is poised to revolutionize transport. In an urban environment plagued by congested roadways, costly infrastructure, and socioeconomic inequality, eVTOL networks offer an attractive solution: rapid, on-demand, point-to-point transit that flies above and beyond the competition. Boasting significantly less construction and maintenance costs than roadways - and far less environmental disruption - VTOL networks promise to outperform all other modes of travel in terms of affordability, accessibility, comfort, and speed. Urban aerial mobility (UAM) markets are set to expand dramatically within the next few years, with initial flights expected as early as 2026.
 
@@ -24,14 +85,14 @@ This document proposes an open software architecture to support dynamic airspace
 
 The proposed open source ecosystem attempts to capture the future of advanced aerial mobility, as it could be. It enables operators safe and secure access to airspace, manages emergency contingencies, complies with the data exchange systems of multiple regulatory bodies, and allows interoperability with other service providers. In a supplemental capacity, it offers automated maintenance scheduling, certification monitoring, telemetry rebroadcasts, and secure storage. Underscoring all systems is the concept of interoperability: that aircraft from numerous manufacturers, countries, and service providers may cooperate on the same network.
 
-#### 1.0.2 Assumptions and Constraints
+### 1.0.2 Assumptions and Constraints
 This architecture acknowledges the existence of other Providers of Service (PSUs), that vertiports and aircraft will be owned and operated by various companies and individuals, and that compliance with civil aviation authority differs from region to region.
 
 This architecture intends to abide by standardized protocols established by NASA, EASA, and other agencies to ensure interoperability between UAM actors and systems.
 
-### 1.1 Overview of the Envisioned System
+## 1.1 Overview of the Envisioned System
 
-#### 1.1.1 Overview
+### 1.1.1 Overview
 
 The Arrow Software Services are broken into several domains of responsibility.
 
@@ -105,9 +166,9 @@ Each service has its own set of documents which should be referred to for more d
 
 A set of user stories for rideshare and cargo operations is currently tracked on the [Arrow Google Drive](https://docs.google.com/spreadsheets/d/1Ad238NAEj6QUzgsjPTRRFJy6NiQVQt2e7affwVVDAFo/edit?usp=sharing).
 
-### 3.2 Overview of System and Key Elements
+## 3.2 Overview of System and Key Elements
 
-#### Provider of Services (PSU) Elements
+### Provider of Services (PSU) Elements
 
 These services enable UAM operators to access airspace legally, safely, and securely.
 
@@ -124,7 +185,7 @@ Service | Responsibilities
 
 </center> 
 
-#### Supplemental Data and Service Provider (SDSP) Elements
+### Supplemental Data and Service Provider (SDSP) Elements
 
 These elements provide *supplemental* (non-essential) services for UAM operations.
 
@@ -155,10 +216,10 @@ Service | Responsibilities
 
 </center> 
 
-### 3.3 External Interfaces
+## 3.3 External Interfaces
 This section describes the interfaces of the system with any other systems that are external to the project. Interfaces *between* services are not shown in these diagrams.
 
-#### PSU Interfaces
+### PSU Interfaces
 
 <center> 
 
@@ -201,7 +262,7 @@ sched <--> port
 - Calculating flight paths will be increasingly important as the number of simultaneous airborne UAM vehicles increases.
 - Flight paths are chosen at the discretion of the Pilot in Control (PIC). Suggested flight paths from this service should be taken into consideration when planning the general route.
 
-#### SDSP Interfaces
+### SDSP Interfaces
 
 <center> 
 
@@ -234,7 +295,7 @@ tlm --> gcs
 - Storage may be local to the services or on a cloud server.
 
 
-#### Rideshare and Cargo Interfaces
+### Rideshare and Cargo Interfaces
 
 <center> 
 
@@ -264,7 +325,7 @@ contact --> customer
 
 `svc-contact`:
 - Access to customer SMS, Email, Push Notifications
-### 3.4 Proposed Capabilities
+## 3.4 Proposed Capabilities
 
 <center> 
 
@@ -286,7 +347,7 @@ In some cases, a flight plan request can be accommodated by simply swapping airc
 
 In cases where the journey cannot be accommodated, alternatives should be recommended. UAM operators (pilots, vertiport operators) may issue commands directly to the `svc-scheduler` to cancel or modify a plan. This may occur mid-flight, such as in a medical emergency, or on a vertiport pad, such as when a vehicle fails pre-flight checks. These events will trigger a fleet optimization from `svc-scheduler` to accommodate the shift in plans.
 
-### 3.5 Modes of Operations
+## 3.5 Modes of Operations
 
 Modes of operation correspond with a general fleet routing behavior. They indicate the current goal of flight operations.
 
@@ -319,7 +380,7 @@ Emergency No-Fly | Terrorism (including cyber attacks)<br>Sudden weather changes
 
 The current mode can be conveyed over radio or cellular channels in the event of a critical outage of software services (electrical failures, solar flares, etc.). Such an event should initiate "Wind Down" mode (at minimum), and each pilot and UAM operator will follow a manual procedure for vertiport access and selection of improvised landing sites, if necessary.
 
-### 4.1 Nominal & Off-Nominal Conditions
+## 4.1 Nominal & Off-Nominal Conditions
 
 Nominal and off-nominal conditions will be addressed by service-level requirements, which will link up to high-level requirements. These documents are still being developed.
 
@@ -330,24 +391,24 @@ Existing documents in this realm include:
 
 The physical environment of these services is a set of servers. The location of the servers depends on the services.
 
-#### PSU Locations
+### PSU Locations
 Provider of Service (PSU) elements will be replicated per region, meaning each region with Arrow operations should host a local physical server. This is to minimize communication delay to aerial actors within the region of operation and to reduce the load on each service by filtering out other regions. 
 
 For example, a city will have its own `svc-scheduler` instance that only manages the airspace and vertiport schedules of that city's region. Cross-region transfers will be negotiated through the city's PSU interface (`svc-discovery`) and the destination region's PSU interface (which may be another `svc-discovery`, if the destination PSU is based on Arrow Services).
 
 PSU services are *safety-critical* and must continue to execute as long as there are aerial operations occurring. Downtime of the `svc-scheduler` in particular can produce unfavorable conditions for pilots, who would no longer be notified of vertiport schedules.
 
-#### SDSP Locations
+### SDSP Locations
 Supplemental Data and Service Provider (SDSP) elements may also be deployed per region. 
 
 As UAM actors may downlink terabytes of telemetry daily, `svc-telemetry` is a strong candidate for a per-region deployment, as is `svc-storage` for the same reason. Local UAM operators using Air Traffic Control and Ground Control System software may rely on rapid telemetry updates and storage read operations.
 
 Temporary downtime of SDSP services is tolerable to an extent. Ultimately a human pilot is still responsible for flying and landing an aircraft safely.
 
-#### Rideshare and Cargo Services Locations
+### Rideshare and Cargo Services Locations
 These services are not mission-critical, nor do they require sub-second response times. One set of rideshare and cargo services may serve multiple regions, depending on user request load. This will be determined through beta testing and simulation.
 
-#### Physical Server Considerations
+### Physical Server Considerations
 Coordinating the movements of thousands of aerial actors over an urban environment is akin to knife juggling in a crowd, in that any interruption of the software services can result in catastrophic consequences. Preventative measures should be taken to ensure continued uptime in the event of physical (and cyber) dangers to server operations.
 
 These possibly include:
@@ -368,11 +429,11 @@ An authorized individual should be onsite (or nearby) at every server location d
 
 ## 7.0 Impact Considerations
 
-### 7.1 Environmental Impacts
+## 7.1 Environmental Impacts
 
 This section limits discussion to Arrow software services which enable rideshares, cargo operations, and numerous simultaneous aerial actors.
 
-#### Benefits
+### Benefits
 
 In a typical automobile journey, energy is wasted following inefficient and indirect paths to the destination: climbing winding grades, routing through a bridge, ferry, or tunnel, idling in traffic, waiting out timed lights. Low in comparison are the carbon emissions of a direct eVTOL flight, which suffers few of the same logistics troubles as grounded vehicles.
 
@@ -382,15 +443,15 @@ New roads and highways are expensive to build, both in financial and environment
 
 VTOL aircraft operations require substantially less physical infrastructure and maintenance in comparison. Flying at an altitude above the treeline, VTOL aircraft operations leave the landscape untouched between the points of travel. Vertipads boast a relatively minimal footprint, and are easier and faster to build and maintain than miles of road. On this count, point-to-point aerial travel would connect communities far more cheaply, sustainably, and quickly than ground transit. The savings become more pronounced with time, as maintenance costs are also significantly lower. While a future without roads is surpassingly distant, VTOL routes present a strong case for new connections, especially where geographical barriers (such as hills, rivers, bogs) and restricted municipal budgets are concerned.
 
-#### Drawbacks
+### Drawbacks
 
 Early tests indicate that [VTOL aircraft have a lower takeoff decibel rating than a helicopter](https://ntrs.nasa.gov/citations/20220006729). Even so, the combination of hundreds of drones and aircraft could make a noticeable contribution to urban noise.
 
 The effects of increased VTOL aerial operations on wildlife should be researched. Migratory patterns of avian and inspect species in particular could be impacted by aerial traffic.
 
-### 7.2 Organizational Impacts
+## 7.2 Organizational Impacts
 
-#### Vertiport Operators
+### Vertiport Operators
 
 Vetiports can be owned by independent entities. Arrow will require certain standards be met for a vertiport to be supported by the Arrow PSU.
 
@@ -400,7 +461,7 @@ Only specific persons in the Arrow database can conduct pre-flight inspections a
 
 Periodic inspections will occur, conducted through an independent agency or a rotating team of Arrow officials. The details of the inspection will be stored immutably (uneditable) and will include the name of the inspector and agency for public review.
 
-#### UAM Controllers (aka Fleet Operators)
+### UAM Controllers (aka Fleet Operators)
 
 Above vertiport operators in the chain of command is the UAM controller.
 
@@ -410,7 +471,7 @@ The UAM controller utilizes air traffic control (ATC) software to monitor aerial
 
 Fleet operators may employ dispatchers who work in a similar capacity.
 
-#### Aviation Mechanics
+### Aviation Mechanics
 
 Aviation mechanic certification is offered by some civil aviation authorities, such as ["FAA-certificated Aviation Maintenance Technicians (AMT)"](https://www.faa.gov/mechanics/become).
 
@@ -420,23 +481,23 @@ Alternatively, maintenance vertiports may be completely shared. A certified mech
 
 Certified mechanics may set up their own vertiports on the Arrow PSU, similar to automobile repair shops. A dedicated vertiport operator is still required in this case. Collective ownership of a vertiport by multiple attached mechanic shops is allowed and encouraged.
 
-#### System Administrators and IT Services
+### System Administrators and IT Services
 Servers and onsite tech support.
 
-#### Government Liaisons
+### Government Liaisons
 
 Consultants or part-time government liaisons will be required to communicate with civil aviation authorities, especially in countries where English is not the primary business language.
 
-#### Legal
+### Legal
 
 Handle suits against the Arrow Services. Crisis management, prevention. Adherence to local civil aviation laws. Submission of appropriate paperwork.
 
-#### Public Relations
+### Public Relations
 
 Design, advertising, community outreach, rider surveys.
 
-### 7.3 Technical Impacts
-#### A New Economy
+## 7.3 Technical Impacts
+### A New Economy
 
 eVTOL aircraft herald a wave of new jobs and economic opportunities. Among which are big ticket items like research, manufacturing, software development, materials testing, certification, maintenance, repair, and functional vertiport design.
 
@@ -444,13 +505,13 @@ Economic opportunity may ripple outwards from vertiports. They may be epicenters
 
 Urban drone delivery operations, which will cooperate with VTOL aircraft on the same network, will enable new logistics and last-mile transport businesses.
 
-#### Municipal Budget
+### Municipal Budget
 
 The cost to establish a new transit route with VTOLs is significantly lower than traditional transit. Already touched on in "Environmental Impacts" is the low cost of building and maintaining new VTOL network routes - specifically, the cost of a vertiport.
 
 New routes to isolated locations can be established the moment that a vertipad is established. No tramways, rails, roads, tunnels, bridges, or highways need to be built. This holds when extending the definition of "isolated" to automobile-only areas where public transit is not located within 30 minutes of walking. No dedicated vehicles, timetables, or staff need to be planned by the city, unlike a bus system. A vertiport added to the system is simply one more place an individual can choose to travel on-demand. This also means less deadhead (no passenger) operation than buses; routes are only active when there are passengers to fly them.
 
-#### Your Budget
+### Your Budget
 
 An affordable point-to-point transit alternative stands to benefit everyone. Take for example [the average U.S. citizen, who spends more than half their income on housing and transportation](https://www.transportation.gov/mission/health/housing-and-transportation-affordability#transportationandhealthconnection). This is a statistic felt even more keenly by low-income communities, and is due in large part to the cost of car ownership.
 
@@ -461,11 +522,11 @@ To make issues worse, car ownership is necessary for many individuals to hold a 
 
 An affordable, safe, fast, and point-to-point transport system with low infrastructure costs is a strong contender for commuting, especially to new areas not yet covered by public transit. It has the potential to save commuters from substantial automobile costs, which would drastically improve the quality of life for many.
 
-#### Stronger Connections with Suburban and Rural Regions
+### Stronger Connections with Suburban and Rural Regions
 
 Consider the example of Native American reservations, which often experience [geographical isolation and reduced access to economic opportunities](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6699168/). An on-demand aerial transport solution, to which geographical barriers are largely a non-issue, has the potential to strengthen ties with these regions by increasing access and cutting commute time for all passengers involved.
 
-#### Expansion of Academic Fields
+### Expansion of Academic Fields
 
 A new method of transportation has the power to redefine the human experience. It will open new chapters of sociology, ecology, economics, architecture, and urban planning. VTOL networks will affect our rooftops, our wallets, local wildlife, climate, and our connectivity to others.
 
