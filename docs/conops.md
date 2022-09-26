@@ -167,7 +167,7 @@ Service | Responsibilities
 `svc-rideshare` | The public API for passengers to request rides through Arrow Services 
 `svc-cargo` | The public API for clients to request cargo transport through Arrow Services
 `svc-charter`| The public API for individuals filing charters for specific aircraft.
-`svc-pricing` | Calculates the cost of an itinerary according to various economic models.
+`svc-pricing` | Provides the ticket price of an itinerary based on various pricing models.
 `svc-payment` | Payment processing, accepting traditional payments and cryptocurrencies.
 `svc-contact` | This service has sole access to customer information, the interface to issue notifications to a client
 
