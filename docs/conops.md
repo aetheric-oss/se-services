@@ -74,12 +74,12 @@ class p subgraph_padding
 graph TB
 subgraph Arrow Rideshare & Cargo Services
 classDef subgraph_padding fill:none,stroke:none
-
     subgraph p [ ]
-	share[svc-rideshare]
-	cargo[svc-cargo]
+    share[svc-rideshare]
+    cargo[svc-cargo]
     charter[svc-charter]
 	pay[svc-payment]
+    pricing[svc-pricing]
 	contact[svc-contact]
     end
 end
@@ -167,6 +167,7 @@ Service | Responsibilities
 `svc-rideshare` | The public API for passengers to request rides through Arrow Services 
 `svc-cargo` | The public API for clients to request cargo transport through Arrow Services
 `svc-charter`| The public API for individuals filing charters for specific aircraft.
+`svc-pricing` | Calculates the cost of an itinerary according to various economic models.
 `svc-payment` | Payment processing, accepting traditional payments and cryptocurrencies.
 `svc-contact` | This service has sole access to customer information, the interface to issue notifications to a client
 
