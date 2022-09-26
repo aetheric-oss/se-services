@@ -63,9 +63,12 @@ Individual services may define further REST endpoints:
 
 ### :space_invader: Authentication
 
-OAuth2 servers will be used to authorize and authenticate users.
+Login and authentication services are still being decided.
 
-Cloud hosting services offer OAuth2, OpenID, and SAML authorization.
+Arrow may leave this to external (non-Arrow) services, such as:
+- SSO
+- Google/Facebook/Apple Credentials
+- Web3 Auth (crypto wallet)
 
 ### :mag: Audit Logging
 
@@ -157,7 +160,9 @@ svc-scheduler-client = 0.1.0
 
 gRPC supports Transport Layer Security (TLS): https://grpc.io/docs/guides/auth/
 
-SSL/TLS certificates will be stored as `.pem` file contents in the GitHub organization as [Encrypted Environment Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets). These environment secrets can be accessed by the CI/CD pipeline without exposing the information to the public.
+SSL/TLS certificates will be stored as `.pem` file contents in the GitHub organization as [Encrypted Environment Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) or in the secrets manager of the cloud provider (AWS, GCP, etc.).
+
+These environment secrets can be accessed by integration tests and CI/CD pipelines without exposing the information to the public.
 
 > Privacy Enhanced Mail, or as it is commonly known PEM, is a file format widely used for storing and transferring encrypted data, especially certificates and cryptographic keys
 
