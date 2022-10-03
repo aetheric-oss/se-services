@@ -43,8 +43,8 @@ classDef subgraph_padding fill:none,stroke:none
 
 subgraph Provider of Services
     subgraph p [ ]
-        sched[svc-scheduler]
-        dcvr[svc-discovery]
+        scheduler[svc-scheduler]
+        discover[svc-discovery]
         com[svc-compliance]
         guid[svc-guidance]
     end
@@ -186,9 +186,9 @@ classDef subgraph_padding fill:none,stroke:none
 
 subgraph psu [Provider of Services]
 subgraph p [ ]
-	sched[svc-scheduler]
+	scheduler[svc-scheduler]
 	guid[svc-guidance]
-	dcvr[svc-discovery]
+	discover[svc-discovery]
 	com[svc-compliance]
 end
 end
@@ -196,10 +196,10 @@ end
 port[Vertiport Operator]
 
 faa{Regulatory Body} <--> com
-psus{Other PSUs} <--> dcvr
+psus{Other PSUs} <--> discover
 guid --> pilot(UAM Pilot)
-sched <--> pilot
-sched <--> port
+scheduler <--> pilot
+scheduler <--> port
 
 class p subgraph_padding
 ```
@@ -425,11 +425,11 @@ The effects of increased VTOL aerial operations on wildlife should be researched
 
 ### 7.2.1 Vertiport Operators
 
-Vetiports can be owned by independent entities. Arrow will require certain standards be met for a vertiport to be supported by the Arrow PSU.
+Vertiports can be owned by independent entities. Arrow will require certain standards be met for a vertiport to be supported by the Arrow PSU.
 
 A vertiport operator's responsibilities include ensuring that aircraft depart on schedule, that status is accurately reported, and that standards of safety and cleanliness are met for the entire vertiport (pads and adjoining passenger areas). 
 
-Only specific persons in the Arrow database can conduct pre-flight inspections and approve aircraft takeoff. Vertiport operators are responsible for maintaining and accurately reporting the certifications of these personnel.
+Only specific persons in the Arrow database can conduct pre-flight inspections and approve aircraft takeoff. Vertiport operators are responsible for maintaining and accurately reporting the certifications of personnel.
 
 Periodic inspections will occur, conducted through an independent agency or a rotating team of Arrow officials. The details of the inspection will be stored immutably (uneditable) and will include the name of the inspector and agency for public review.
 
