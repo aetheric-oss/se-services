@@ -153,9 +153,9 @@ In our case, these include:
 
 #### Collaboration
 
-Prior to Release/Version One: [Concept Phase](#-concept-phase)
+Prior to Release/Version One: [Concept Phase](#bulb-concept-phase)
 
-Collaboration on a version controlled document is the same as collaboration on source code, which is outlined [here](./#code-collaboration).
+Collaboration on a version-controlled document is the same as collaboration on source code, which is outlined [here](#busts_in_silhouette-code-collaboration).
 
 #### Edit Permissions
 
@@ -177,9 +177,9 @@ Multiple Pull Requests may be merged into `develop` throughout the course of a r
 
 At the end of a release cycle, a Pull Request is created to merge the `develop` branch into `main`. 
 
-This is the final opportunity for collaborators to review the documents and make comments. This is also where a [pre-release checklist](checklists/prerelease.md) is addressed.
+This is the final opportunity for collaborators to review the documents and make comments. This is also where a pre-release checklist (:construction:) is addressed.
 
-At this stage, supplementary presentations and video may accompany source code and documentation.
+At this stage, supplementary presentations and videos may accompany source code and documentation.
 
 When the review completes and the pre-release checklist is complete, the `develop` branch is merged into `main`.
 
@@ -187,7 +187,7 @@ When the review completes and the pre-release checklist is complete, the `develo
 
 Markdown documents in a GitHub repository will be packaged with source code when a release is created. Each document does not need its own document version.
 
-Creating a release in GitHub is discussed in [Code Collaboration](#code-collaboration).
+Creating a release in GitHub is discussed in [Code Collaboration](#busts_in_silhouette-code-collaboration).
 
 ### :bar_chart: Google Docs/Sheets (in Google Drive)
 
@@ -200,8 +200,8 @@ flowchart TD;
   concept --> r
   subgraph r["Google Drive Release Cycle"]
     start[End of Release] --> lock[Lock the Document]
-    lock --> appr[Activate 'Approvals' Feature]
-    appr --> await[Await Review Comments\nPublic Time Window]
+    lock --> approve[Activate 'Approvals' Feature]
+    approve --> await[Await Review Comments\nPublic Time Window]
     await --Comments?--> address[Make Edits] --> await
     await --Obtained Approvals--> version[Name a New Version]
   end
@@ -235,7 +235,7 @@ Specific documents that these include:
 
 #### Collaboration
 
-Collaboration on a document in Google Drive is discussed in the [Concept Phase](#concept-phase).
+Collaboration on a document in Google Drive is discussed in the [Concept Phase](#bulb-concept-phase).
 
 #### Edit Permissions
 
@@ -259,11 +259,11 @@ The document should be locked at this time. The primary author shall make a publ
 
 The time window for reviewing the document shall also be public.
 
-This is the final opportunity for collaborators to review the document and make comments. This is also where a [pre-release checklist](FIXME) is addressed, including adherence to the [Writing Style Guide](https://www.arrowair.com/docs/contributing/styleguides/writing).
+This is the final opportunity for collaborators to review the document and make comments. This is also where a pre-release checklist (:construction:) is addressed, including adherence to the [Writing Style Guide](https://www.arrowair.com/docs/contributing/styleguides/writing).
 
-At this stage, supplementary presentations and video may accompany the documentation.
+At this stage, supplementary presentations and videos may accompany the documentation.
 
-When the all approval comments are complete, it is time to 
+When all approval comments are complete, it is time to 
 
 ##### Creating a Release
 
@@ -335,7 +335,7 @@ Requirements have the following attributes:
   - Never changes, allows Label to be changed
 - **Label**
   - Easier name for this requirement
-  - e.g. "REQ-SCHED-0001"
+  - e.g. "REQ-SCHEDULER-0001"
 - **Primary Text**
   - *"The module shall..."*
 - **Rationale**
@@ -348,7 +348,7 @@ Requirements have the following attributes:
 - **Children**
   - Any requirements that extend from this requirement
 - **Linked User Story**
-  - What user stories is this requirement addressing?
+  - Which user stories does this requirement address?
 
 *Example*:
 
