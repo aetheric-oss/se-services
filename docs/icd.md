@@ -150,7 +150,7 @@ svc-scheduler-client-grpc = 0.1.0
 
 gRPC supports Transport Layer Security (TLS): https://grpc.io/docs/guides/auth/
 
-SSL/TLS certificates will be stored as `.pem` file contents in the GitHub organization as [Encrypted Environment Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) or in the secrets manager of the cloud provider (AWS, GCP, etc.).
+SSL/TLS certificates will be stored as `.pem` file contents in the GitHub organization as encrypted environment secrets or in the secrets manager of the cloud provider (AWS, GCP, etc.).
 
 These environment secrets can be accessed by integration tests and CI/CD pipelines without exposing the information to the public.
 
