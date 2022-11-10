@@ -43,8 +43,9 @@ The `client-rest` crate for each microservice (e.g. `svc-cargo-client-rest`) can
 
 ```tree
 .
-├── Cargo.toml # [workspace] members = ['client', 'server']
+├── Cargo.toml # [workspace] members = ['client-rest', 'client-grpc', 'server']
 ├── Makefile
+├── client-grpc/
 └── openapi/
     └── ** types.rs **
 └── client-rest/
@@ -112,7 +113,7 @@ File | Description
 
 ```tree
 .
-├── Cargo.toml
+├── Cargo.toml # [workspace] members = ['client-grpc', 'server']
 ├── Makefile
 ├── client-grpc/
 │   ├── Cargo.toml
