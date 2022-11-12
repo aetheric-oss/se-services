@@ -55,7 +55,6 @@ approvals prior to merging the branch.
 The official [Arrow Developer Guide](https://www.arrowair.com/docs/contributing/devguide) describes this process in specifics.
 
 ### :bookmark: Creating a Release
-Creating a new release is a trivial action in the GitHub interface and is already [well documented](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
 
 When?
 - After end-of-release reviews are completed and the `develop` branch is merged into `main`, the Core Team will create a new release from the `main` branch.
