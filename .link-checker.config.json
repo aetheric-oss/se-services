@@ -1,3 +1,4 @@
 {
+    "ignorePatterns": [{ "pattern": "pexels.com/@" } ]
 }
 
