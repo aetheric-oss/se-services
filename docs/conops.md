@@ -54,7 +54,7 @@ While use cases stretch as far as the imagination, airspace and regulatory resou
 
 ## 1.1 Project Overview
 
-This document proposes an open-source software architecture to support dynamic airspace management, data exchange, and regulatory compliance between Urban Aerial Mobility (UAM) actors. The proposed system undertakes the responsibilities of **Provider of Services to UAM (PSU)** and **Provider of Supplemental Data and Services (SDSP)** as outlined by the [NASA UAM Airspace Research Roadmap<sup>[nasa]</sup>](https://ntrs.nasa.gov/citations/20220008917). It also proposes use cases in the form of cargo and passenger rideshare services.
+This document proposes an open-source software architecture to support dynamic airspace management, data exchange, and regulatory compliance between Urban Aerial Mobility (UAM) actors. The proposed system undertakes the responsibilities of **Provider of Services to UAM (PSU)** and **Provider of Supplemental Data and Services (SDSP)** as outlined by the [NASA UAM Airspace Research Roadmap](https://ntrs.nasa.gov/citations/20220008917)<sup>[[nasa]](#nasa)</sup>. It also proposes use cases in the form of cargo and passenger rideshare services.
 
 The proposed open-source ecosystem attempts to capture the future of advanced aerial mobility as it could be. It aims to offer operators safe and secure access to airspace, comply with the data exchange systems of multiple regulatory bodies, and allow interoperability with other service providers. In a supplemental capacity, it offers certification monitoring, telemetry broadcasts, logging, and secure storage. Underscoring all systems is the concept of interoperability: that aircraft from numerous manufacturers, countries, and service providers may cooperate on a larger shared vertiport network. As a result, an operator experiences more economic opportunities and the consumer experiences competitively priced fares and a choice of service providers.
 
@@ -549,7 +549,7 @@ Consider the following environments for which eVTOL technologies thrive:
 
 ### 7.0.2 Drawbacks
 
-Early tests indicate that [VTOL aircraft have a lower takeoff decibel rating than a helicopter<sup>[decibel]</sup>](https://ntrs.nasa.gov/citations/20220006729). Even so, the combination of hundreds of drones and aircraft could make a noticeable contribution to urban noise.
+Early tests indicate that [VTOL aircraft have a lower takeoff decibel rating than a helicopter](https://ntrs.nasa.gov/citations/20220006729)<sup>[[decibel]](#decibel)</sup>. Even so, the combination of hundreds of drones and aircraft could make a noticeable contribution to urban noise.
 
 The effects of increased VTOL aerial operations on wildlife should be researched. Migratory patterns of avian and inspect species could be impacted by aerial traffic. Further research is needed in this area.
 
@@ -742,7 +742,7 @@ A new method of transportation has the power to redefine the human experience. I
 
 It can generally be stated that individuals will choose the most convenient form of transportation available to them. In many U.S. cities, this would be an automobile.
 
-Consider the top reasons why respondents avoided public transit in a [2019 Opinion Survey of Transit in San Diego, California, U.S.A.<sup>[sandag]</sup>](https://drive.google.com/file/d/1vR8G-ymRao2brI_fn5e8n9XUVz9SFjxJ/view?usp=share_link):
+Consider the top reasons why respondents avoided public transit in a [2019 Opinion Survey of Transit in San Diego, California, U.S.A.](https://drive.google.com/file/d/1vR8G-ymRao2brI_fn5e8n9XUVz9SFjxJ/view?usp=share_link)<sup>[[sandag]](#sandag)</sup>:
 > - System not complete enough/not in my area/can't reach destination
 > - Public transit is too slow
 > - Have other errands I need to do that require a car
@@ -758,11 +758,11 @@ These opinions touch on the main limitations of a public transit system:
 3) Throughput is limited by the number and capacity of vehicles in circulation
 4) Safety concerns from other riders who aren't behaving civilly
 
-Limited locations may demand significant walking for prospective riders. At worst, distances are so great that individuals will choose private automobile transport instead (especially in adversely hot, cold, or stormy weather). This [2019 study in Munich, Germany<sup>[munich]</sup>](https://www.emerald.com/insight/content/doi/10.1108/SASBE-07-2017-0031/full/html#sec004) found that interest in public transit drops significantly when walking time exceeds 15 minutes.
+Limited locations may demand significant walking for prospective riders. At worst, distances are so great that individuals will choose private automobile transport instead (especially in adversely hot, cold, or stormy weather). This [2019 study in Munich, Germany](https://www.emerald.com/insight/content/doi/10.1108/SASBE-07-2017-0031/full/html#sec004)<sup>[[munich]](#munich)</sup> found that interest in public transit drops significantly when walking time exceeds 15 minutes.
 
 Limited routes are also a serious problem afflicting ridership. It is not uncommon for passengers to take multiple buses or trains to reach their destination), with each leg increasing inconvenience and cost - if their destination is reachable at all. It is also not uncommon for riders to hail a rideshare or use a private automobile between a station and a location.
 
-Regarding infrequent service, [prospective public bus transit ridership steeply drops after 10 minutes<sup>[district]</sup>](https://www.scirp.org/journal/paperinformation.aspx?paperid=95820#t1). With both this study and the Munich study, drop-off in interest is not linear. There is a nearly binary threshold at which public interest abruptly shifts.
+Regarding infrequent service, [prospective public bus transit ridership steeply drops after 10 minutes](https://www.scirp.org/journal/paperinformation.aspx?paperid=95820#t1) <sup>[[survey]](#survey)</sup>. With both this study and the Munich study, drop-off in interest is not linear. There is a nearly binary threshold at which public interest abruptly shifts.
 
 To an extent, VTOL networks are also affected by these factors. VTOL aircraft are limited to specific landing zones ("vertiports") which may be even more sparsely distributed than transit stops. They also don't carry as many passengers as a train, trolley, or bus. An insufficient quantity of vehicles, vertiports, and pickup times render VTOL benefits inconsequential if rider demand can't be met.
 
@@ -770,7 +770,7 @@ To an extent, VTOL networks are also affected by these factors. VTOL aircraft ar
 
 Especially in early phases with limited vertiport and aircraft, rideshares and charters will possibly charge a premium in order to fund further capital investment in the VTOL network. These premiums are planned to dissipate with increased access and vertiport competition. However, it would be honest to postulate that a socioeconomic disparity in ridership could be present in early operations.
 
-It is not Arrow's intention to solely market to high-income persons. In the long term, it is critical that all individuals spanning the income spectrum continue to choose VTOL services over automobiles. Politically, the support of affluent individuals and the popular vote of middle-to-lower income riders will be critical to establishing more vertiports and increasing rider throughput. Ethically and morally, it is incumbent that new and better transit solutions are offered equally to individuals of all socioeconomic status. Given that VTOL networks are an economic gateway, failure to do so would be a direct contribution to wealth inequality.
+It is not Arrow's intention to solely market to high-income persons. In the long term, it is critical that all individuals spanning the income spectrum continue to choose VTOL services over automobiles. Politically, the support of affluent individuals and the popular vote of middle-to-lower income riders will be critical to establishing more vertiports and increasing rider throughput. Ethically and morally, it is incumbent that new and better transit solutions are offered equally to individuals of all socioeconomic statuses. Given that VTOL networks are an economic gateway, failure to do so would be a direct contribution to wealth inequality.
 
 ### 8.0.3 Political Opposition
 
@@ -782,9 +782,7 @@ It is not Arrow's intention to solely market to high-income persons. In the long
 
 </div>
 
-In every region there will exist political opposition to VTOL services. 
-
-Potential opponents could include:
+Potential opponents to VTOL services could include:
 - Petrol & Gas, Automotive:
   - Electric UAM operations may reduce reliance on the automobile
 - Real Estate, Homeowners:
@@ -816,17 +814,15 @@ We will be seeking guidance from NASA, FAA, EASA, and other regional agencies re
 
 ## Appendix A: Citations
 
-<sup>nasa</sup> Levitt, I., Phojanamongkolkij, N., Horn, A., Witzberger, K., “UAM Airspace Research Roadmap Rev. 1.2 - NASA Technical Reports Server (NTRS).” NASA, NASA, https://ntrs.nasa.gov/citations/20220008917
+<a id="nasa"><sup>[nasa]</sup></a> Levitt, I., Phojanamongkolkij, N., Horn, A., Witzberger, K., “UAM Airspace Research Roadmap Rev. 1.2 - NASA Technical Reports Server (NTRS).” NASA, NASA, https://ntrs.nasa.gov/citations/20220008917
 
-<sup>decibel</sup> Pascioni, Kyle A, et al. “Acoustic Flight Test of the Joby Aviation Advanced Air Mobility Prototype Vehicle - NASA Technical Reports Server (NTRS).” NASA, NASA, https://ntrs.nasa.gov/citations/20220006729. 
+<a id="decibel"><sup>[decibel]</sup></a> Pascioni, Kyle A, et al. “Acoustic Flight Test of the Joby Aviation Advanced Air Mobility Prototype Vehicle - NASA Technical Reports Server (NTRS).” NASA, NASA, https://ntrs.nasa.gov/citations/20220006729. 
 
-<sup>munich</sup> Sarker, R.I., Mailer, M. and Sikder, S.K. (2020), "Walking to a public transport station: Empirical evidence on willingness and acceptance in Munich, Germany", Smart and Sustainable Built Environment, Vol. 9 No. 1, pp. 38-53. https://doi.org/10.1108/SASBE-07-2017-0031
+<a id="munich"><sup>[munich]</sup></a> Sarker, R.I., Mailer, M. and Sikder, S.K. (2020), "Walking to a public transport station: Empirical evidence on willingness and acceptance in Munich, Germany", Smart and Sustainable Built Environment, Vol. 9 No. 1, pp. 38-53. https://doi.org/10.1108/SASBE-07-2017-0031
 
-<sup>sandag</sup> Redhill Group (2020), 2019 SANDAG Transit Public Opinion Survey - Final Report, pp. 32-37, https://drive.google.com/file/d/1vR8G-ymRao2brI_fn5e8n9XUVz9SFjxJ/view?usp=share_link
+<a id="sandag"><sup>[sandag]</sup></a> Redhill Group (2020), 2019 SANDAG Transit Public Opinion Survey - Final Report, pp. 32-37, https://drive.google.com/file/d/1vR8G-ymRao2brI_fn5e8n9XUVz9SFjxJ/view?usp=share_link
 
-<sup>district</sup> Arhin, S., Ptoe, P., Gatiba, A., Anderson, M. , Ribbisso, M. and Manandhar, B. (2019) Patron Survey of Acceptable Wait Times at Transit Bus Stops in the District of Columbia. Open Journal of Civil Engineering, 9, 268-280. doi: 10.4236/ojce.2019.94019
-
-<sup>reservation</sup> Sandefur, G.D. (1989). "American Indian reservations: the first underclass areas?", Focus 12, pp. 1:37-41
+<a id="survey"><sup>[survey]</sup></a> Arhin, S., Ptoe, P., Gatiba, A., Anderson, M. , Ribbisso, M. and Manandhar, B. (2019) Patron Survey of Acceptable Wait Times at Transit Bus Stops in the District of Columbia. Open Journal of Civil Engineering, 9, 268-280. doi: 10.4236/ojce.2019.94019
 
 ## Appendix B: Acronyms & Glossary
 
