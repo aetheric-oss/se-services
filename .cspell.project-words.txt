@@ -52,3 +52,5 @@ Manandhar
 ojce
 Sandefur
 toamasina
+nocodb
+noco

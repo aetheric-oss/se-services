@@ -2,9 +2,7 @@
 
 <div align="center">
 
-<img src="https://github.com/Arrow-air/tf-github/raw/main/src/templates/doc-banner-services.png" style="height:250px" />
-
-</div>
+<img src="https://github.com/Arrow-air/tf-github/raw/main/src/templates/doc-icon-blue-navy.png" style="height:250px" />
 
 Item | Value
 --- | ---
@@ -13,6 +11,8 @@ Author(s) | A.M. Smith
 Status | Draft
 
 :exclamation: This document is intended for internal use.
+
+</div>
 
 ## 1.0 Motivation
 
@@ -50,77 +50,11 @@ Key to the rapid expansion of VTOL networks is the diminutive footprint of the v
 
 Densely distributed vertipads will open the skies to a vast and motley assortment of aircraft: public transit ferries, independent rideshares, corporate charters, cargo deliveries by the dozen, municipal fleets, medical drones, construction surveyors, vigilant security patrols, and hundreds more. These aircraft will integrate with conventional air traffic, operating in and out of controlled and uncontrolled airports.
 
-While use cases stretch as far as the imagination, airspace and regulatory resources may be far more limited. **If these myriad aerial actors wish to integrate safely with conventional air traffic, airspace management and scheduling will need to evolve.**
+While use cases stretch as far as the imagination, airspace and regulatory resources may be far more limited. **If numerous aerial actors wish to integrate safely with conventional air traffic, airspace management and scheduling will need to evolve.**
 
 ## 1.1 Project Overview
 
 This document proposes an open-source software architecture to support dynamic airspace management, data exchange, and regulatory compliance between Urban Aerial Mobility (UAM) actors. The proposed system undertakes the responsibilities of **Provider of Services to UAM (PSU)** and **Provider of Supplemental Data and Services (SDSP)** as outlined by the [NASA UAM Airspace Research Roadmap](https://ntrs.nasa.gov/citations/20220008917)<sup>[[nasa]](#nasa)</sup>. It also proposes use cases in the form of cargo and passenger rideshare services.
-
-The proposed open-source ecosystem attempts to capture the future of advanced aerial mobility as it could be. It aims to offer operators safe and secure access to airspace, comply with the data exchange systems of multiple regulatory bodies, and allow interoperability with other service providers. In a supplemental capacity, it offers certification monitoring, telemetry broadcasts, logging, and secure storage. Underscoring all systems is the concept of interoperability: that aircraft from numerous manufacturers, countries, and service providers may cooperate on a larger shared vertiport network. As a result, an operator experiences more economic opportunities and the consumer experiences competitively priced fares and a choice of service providers.
-
-### 1.1.1 Assumptions and Constraints
-
-This architecture acknowledges the existence of other Providers of Service (PSUs), that vertiports and aircraft will be owned and operated by various companies and individuals, and that compliance with civil aviation authority differs from region to region.
-
-This architecture intends to abide by standardized frameworks established by leading aviation regulatory bodies such as the FAA, NASA, and EASA (e.g. U-space) to ensure interoperability between UAM actors and systems.
-
-## 1.2 Overview of the Envisioned System
-
-### 1.2.1 Overview
-
-The Arrow Software Services are broken into several domains of responsibility.
-
-<div align="center"> 
-
-```mermaid
-graph TB
-classDef subgraph_padding fill:none,stroke:none
-
-subgraph psu [Provider of Services - Core Network]
-    subgraph p [ ]
-        scheduler[svc-scheduler]
-        discover[svc-discovery]
-        com[svc-compliance]
-        guid[svc-guidance]
-    end
-end
-
-class p subgraph_padding
-```
-```mermaid
-graph TB
-classDef subgraph_padding fill:none,stroke:none
-
-subgraph Supplemental Data and Service Provider
-    subgraph p [ ]
-    assets[svc-assets]
-    stor[svc-storage]
-    tlm[svc-telemetry]
-    upk[svc-upkeep]
-    end
-end
-
-class p subgraph_padding
-```
-
-```mermaid
-
-graph TB
-subgraph Arrow Rideshare & Cargo Services
-classDef subgraph_padding fill:none,stroke:none
-    subgraph p [ ]
-    share[svc-rideshare]
-    cargo[svc-cargo]
-    charter[svc-charter]
-	pay[svc-payment]
-    pricing[svc-pricing]
-	contact[svc-contact]
-    end
-end
-
-class p subgraph_padding
-```
-</div> 
 
 **Provider of Services (PSU)** elements enable UAM operators to access airspace legally, safely, and securely. 
 
@@ -132,7 +66,19 @@ class p subgraph_padding
 
 **Rideshare and Cargo Services** elements are client-facing and not essential. Downtime of these services doesn't impact airspace management or passenger safety.
 
+We utilize a robust **microservice approach** running on a multi-cloud platform allowing us to use edge servers
+for faster response times. To ensure high availability, we use autoscaling clusters that adjust resources
+based on demand.
+
 Descriptions of the individual services are covered in section 3.2.
+
+The proposed open-source ecosystem attempts to capture the future of advanced aerial mobility as it could be. It aims to offer operators secure access to airspace, comply with the data exchange systems of multiple regulatory bodies, and allow interoperability with other service providers. In a supplemental capacity, it offers certification monitoring, telemetry broadcasts, logging, and secure storage.
+
+### 1.1.1 Assumptions and Constraints
+
+This architecture acknowledges the existence of other Providers of Service (PSUs), that vertiports and aircraft will be owned and operated by various companies and individuals, and that compliance with civil aviation authority differs from region to region.
+
+This architecture intends to abide by standardized frameworks established by leading aviation regulatory bodies such as the FAA, NASA, and EASA (e.g. U-space) to ensure interoperability between UAM actors and systems.
 
 ## 2.0 Documents
 ### 2.0.1 Applicable Resources
@@ -142,6 +88,7 @@ Descriptions of the individual services are covered in section 3.2.
 | [UAM Airspace Research Roadmap](https://ntrs.nasa.gov/citations/20210019876) | Website
 | [NASA Air Traffic Management (ATM-X)](https://www.nasa.gov/aeroresearch/programs/aosp/atm-x/atm-x-project-description) | Website
 | [NASA Extensible Traffic Management (xTM) Research ](https://ntrs.nasa.gov/citations/20210025112) | Website
+| [FAA UAM Concept of Operations v2.0](https://www.faa.gov/sites/faa.gov/files/Urban%20Air%20Mobility%20%28UAM%29%20Concept%20of%20Operations%202.0_0.pdf) | PDF
 
 ## 3.0 Description of Envisioned System
 
@@ -154,7 +101,7 @@ Each service has its own set of documents which should be referred to for more d
 - Interface Control Document (ICD)
 - Verification and Validation (V&V) Document
 
-A set of user stories for rideshare and cargo operations is currently tracked on the [Arrow Google Drive](https://docs.google.com/spreadsheets/d/1Ad238NAEj6QUzgsjPTRRFJy6NiQVQt2e7affwVVDAFo/edit?usp=sharing).
+Requirements for all microservices are hosted on our [Arrow Air NocoDB](https://nocodb.arrowair.com/dashboard/#/base/c436b0fb-9d80-4465-880c-860ce8300839) instance.
 
 ## 3.2 Overview of System and Key Elements
 
@@ -162,194 +109,132 @@ A set of user stories for rideshare and cargo operations is currently tracked on
 
 These services enable UAM operators to access airspace legally, safely, and securely.
 
-<div align="center"> 
-
-Service | Responsibilities
+Microservice | Responsibilities
 --- | ---
-`svc-scheduler` | Dynamic airspace management<br>Vertiport scheduling<br>Flight plan bookkeeping<br>Fleet routing optimization
-`svc-discovery` | Interaction with other PSUs<br>Adheres to standardized PSU interfaces
-`svc-compliance` | Notifications, flight restrictions, authorization approvals from local authority<br>Automated dispatch of flight plans and release requests to local authority<br>Complies with regulatory file formats such as FIDXP<sup>*</sup>
-`svc-guidance` | Noncompulsory flight path guidance<br>Importance increases with number of aerial actors
+[`svc-scheduler`](https://github.com/Arrow-air/svc-scheduler) | Dynamic airspace management.<br>Vertiport scheduling.<br>Flight plan bookkeeping<br>Fleet routing optimization.
+[`svc-gis`](https://github.com/Arrow-air/svc-gis) | Abstracted interface to the PostGIS server.
+[`svc-storage`](https://github.com/Arrow-air/svc-storage) | Abstracted storage interface for other services.<br>Logs, flight plans, telemetry, vertiport specifications, personnel data, maintenance records, certification records, and so on.<br>Gateway to the CockroachDB cluster.
+[`svc-compliance`](https://github.com/Arrow-air/svc-compliance) | Notifications, flight restrictions, authorization approvals from local authority.<br>Automated dispatch of flight plans and release requests to local authority.<br>Regulatory formats such as FIDXP<sup>*</sup>.
+[`svc-atc`](https://github.com/Arrow-air/svc-atc) | Responsible for de-conflicting active flight trajectories.<br>Importance increases with number of aerial actors.<br>Issues commands to aircraft to change airspace corridors to avoid possible collisions.
+[`svc-discovery`](https://github.com/Arrow-air/svc-discovery) | Interaction with other PSUs.<br>Standardized PSU interfaces such as U-Space.
+[`svc-telemetry`](https://github.com/Arrow-air/svc-telemetry) | Receives, deduplicates, and stores live vehicle telemetry.<br>Rebroadcasts to ATC tools and other authenticated listeners.
 
 <sup>*</sup> FAA-Industry Data Exchange Protocol
 
-</div> 
+Supplementary Processes | Responsibilities
+--- | ---
+[CockroachDB](https://www.cockroachlabs.com/product/) | A distributed PostgreSQL database designed for speed and scale.
+[PostGIS](https://postgis.net/) | A spatial database extender for PostgresSQL.
+[RabbitMQ](https://www.rabbitmq.com/) | Open source message broker for pub-sub relationships.
+[Redis](https://redis.io/) | In-memory NoSQL database for fast caching and retrieval of key-value pairs.
 
 ### 3.2.2 Supplemental Data and Service Provider (SDSP) Elements
 
 These elements provide *supplemental* (not safety-critical) services for UAM operations.
 
-<div align="center"> 
+Some of these microservices expose a public API. They handle transactions with cargo and rideshare customers and are not essential to the operation of the PSU.
 
 Service | Responsibilities
 --- | ---
-`svc-assets` | Allow external clients to register and management assets (aircraft and vertiports).
-`svc-storage` | Abstracted storage interface for the other services<br>Logs, maintenance records, certification records, and so on
-`svc-telemetry` | Receives and stores live vehicle telemetry<sup>*</sup><br>Rebroadcasts to ground control/air traffic control tools and other listeners
-`svc-upkeep` | Monitor expiration of vehicle and component certifications<br>Preemptively schedule flights for maintenance
-
-</div>
-
-<sup>*</sup> May qualify as a PSU element.
-### 3.2.3 Rideshare and Cargo Services
-
-These client-facing services expose an API. These are not safety-critical.
-
-<div align="center"> 
-
-Service | Responsibilities
---- | ---
-`svc-rideshare` | The public API for passengers to request rides through Arrow Services 
-`svc-cargo` | The public API for clients to request cargo transport through Arrow Services
-`svc-charter`| The public API for individuals filing charters for specific aircraft.
-`svc-pricing` | Provides the ticket price of an itinerary based on various pricing models.
+[`svc-assets`](https://github.com/Arrow-air/svc-assets) | Allow external clients to register and management assets (aircraft and vertiports).
+[`svc-cargo`](https://github.com/Arrow-air/svc-cargo) | The public API for clients to request cargo transport through Arrow Services
+[`svc-pricing`](https://github.com/Arrow-air/svc-pricing) | Provides the ticket price of an itinerary based on various pricing models.
+[`svc-contact`](https://github.com/Arrow-air/svc-contact) | This service has sole access to customer information, the interface to issue notifications to a client
+[`svc-docs`](https://github.com/Arrow-air/svc-docs) | Generates invoices and bills of lading for the customer and shipper.
 `svc-payment` | Payment processing, accepting traditional payments and cryptocurrencies.
-`svc-contact` | This service has sole access to customer information, the interface to issue notifications to a client
-
-</div> 
+`svc-upkeep` | Monitor expiration of vehicle and component certifications<br>Preemptively schedule flights for maintenance
 
 ## 3.3 External Interfaces
 This section describes the interfaces of the system with any other systems that are external to the project. Interfaces *between* services are not shown in these diagrams.
 
-### 3.3.1 PSU Interfaces
 
 <div align="center"> 
 
-```mermaid
-flowchart TD
-classDef subgraph_padding fill:none,stroke:none
+![Arrow Network Interfaces](./assets/interfaces.png)
 
-subgraph psu [Provider of Services]
-subgraph p [ ]
-	scheduler[svc-scheduler]
-	guid[svc-guidance]
-	discover[svc-discovery]
-	com[svc-compliance]
-end
-end
+</div>
 
-port[Vertiport Operator]
+Interface | Description
+--- | ---
+[`svc-discovery`](https://github.com/Arrow-air/svc-discovery) | Other PSUs may need to coordinate with this PSU in scheduling flights.<br>Other PSUs may request information from the network.
+[`svc-compliance`](https://github.com/Arrow-air/svc-compliance) | Information exchanged with civil aviation authorities may include notifications, confirmation of flight authorization, flight restrictions, flight corridors, and Special Use/Activity Airspaces (SAA).<br>FAA-Industry Data Exchange Protocol (FIDXP) is an interface that allows UAM operators to obtain information from the United States [National Airspace System (NAS) Data Exchange](https://www.faa.gov/air_traffic/nas/).<br>Data exchange formats may differ based on region.
+[`svc-atc`](https://github.com/Arrow-air/svc-atc) | Issues commands to (especially unmanned) aircraft to change flight corridors, heading, velocity, or other flight characteristics in order to de-conflict colliding flight paths.<br>Vehicle-to-vehicle avoidance should be last resort, as ATC should prevent these collisions in advance.<br>Aircraft responses are captured by the telemetry service.
+[`svc-telemetry`](https://github.com/Arrow-air/svc-telemetry) | Vertiports and vehicles broadcast telemetry, which is processed and stored by this service.<br>This service may re-broadcast telemetry to clients such as Air Traffic Control (ATC) software.<br>De-duplicates telemetry (from multiple reporters) for a clean feed to svc-atc.
+[`svc-assets`](https://github.com/Arrow-air/svc-assets) | Operators can register and manage assets on the network.<br>  This may include pricing configurations, usage restrictions, or availability.
+[`svc-cargo`](https://github.com/Arrow-air/svc-cargo) | APIs for clients to request flights.
+[`svc-contact`](https://github.com/Arrow-air/svc-contact) | Calls the API of an Email/SMS service with form data to contact customers, operators, and other stakeholders.
+[`svc-pricing`](https://github.com/Arrow-air/svc-pricing) | Operators' pricing algorithms may exist on an outside server.<br>They can expose an standardized API through which svc-pricing obtains the price of a flight for a customer using the operators' assets.
+[RabbitMQ](https://www.rabbitmq.com/) | A message broker node streaming network data to authenticated listeners.<br>Example: telemetry streams for air traffic control.
 
-faa{Regulatory Body} <--> com
-psus{Other PSUs} <--> discover
-guid --> pilot(UAM Pilot)
-scheduler <--> pilot
-scheduler <--> port
+## 3.4 Capabilities
 
-class p subgraph_padding
-```
+### 3.4.1 Aircraft Routing
 
-</div> 
+![Arrow Routing Microservices Interaction](./assets/postgis.png)
 
-`svc-scheduler`:
-- Reports schedules to Vertiport Operators and Pilots in Control (PIC).
-- Vertiport Operators and Pilots may make requests to the scheduler to delay or accelerate a departure, cancel a flight, or initiate emergency operations.
+Aircraft routing and automated ATC is performed with the help of a PostGIS database.
 
-`svc-compliance`:
-- Information exchanged with civil aviation authorities may include notifications, confirmation of flight authorization, flight restrictions, charted routes, and Special Use/Activity Airspaces (SAA).
-- FAA-Industry Data Exchange Protocol (FIDXP) is an interface that allows UAM operators to obtain information from the United States [National Airspace System (NAS) Data Exchange](https://www.faa.gov/air_traffic/nas/).
-- Data exchange formats may differ based on region.
+In this demonstration, **route nodes** are populated from a list of vertiports and aviation waypoints. These nodes are then used to build **routes**. We currently connect all nodes within 300 kilometers of one another. In the future, routes may be predetermined by the FAA, EASA, or other civil aviation agency.
 
-`svc-discovery`:
-- Other PSUs may need to coordinate with this PSU in scheduling flights to vertiports.
-- Example: proprietary PSU schedules a flight from a private vertiport to a public vertiport managed by this PSU.
-- Example: regional instances of *svc-scheduler* coordinate to transfer stewardship of an aircraft departing one PSU's region into another PSU's region.
+Reports from `svc-compliance` are used to build **no-fly geometries** (either permanent or temporary). Routes that overlap with no-fly geometries at a customer's proposed flight time are discarded.
 
-`svc-guidance`:
-- Calculating flight paths will be increasingly important as the number of simultaneous airborne UAM vehicles increases.
-- Flight paths are chosen at the discretion of the Pilot in Control (PIC). Suggested flight paths from this service should be taken into consideration when planning the general route.
+![Routing Around No-Fly Zones](./assets/no-fly-routing.png)
 
-### 3.3.2 SDSP Interfaces
+A shortest path algorithm (A*) then connects the departure vertiport to the arrival vertiport.
 
-<div align="center"> 
+![Shortest Path](./assets/shortest-path.png)
 
-```mermaid
-flowchart BT
-classDef subgraph_padding fill:none,stroke:none
+The list of waypoints is used to estimate a travel distance, duration, and (in coming releases) battery discharge.
 
-subgraph Supplemental Data and Service Providers
-subgraph p [ ]
-	stor[svc-storage]
-	tlm[svc-telemetry]
-	upk[svc-upkeep]
-  assets[svc-assets]
-end
-end
+These routes are planned to be expanded to include multiple vertically stacked flight corridors, each with a pair of separated lanes for travel in opposing directions. Such corridors are mentioned by the [FAA UAM CONOPS v2.0](https://www.faa.gov/sites/faa.gov/files/Urban%20Air%20Mobility%20%28UAM%29%20Concept%20of%20Operations%202.0_0.pdf) (figures 4, 5, 6, and 7).
 
-gcs{Ground Control/<br>Air Traffic Control<br>Interfaces}
-vehicle[UAM Vehicle] -- Telemetry --> tlm
-stor <--> cloud{Cloud Storage}
-tlm --> gcs
-Operators <-- Register Assets<br>Manage Assets --> assets
-class p subgraph_padding
-```
+Additionally, these corridors can be assigned a max capacity. Corridors at max capacity would be disregarded by the shortest path algorithm. This also allows for load balancing, prioritizing corridors with less utilization to spread traffic evenly.
 
-</div> 
+### 3.4.2 Aircraft Selection
 
-`svc-telemetry`:
-- UAM vehicles broadcast telemetry, which is processed and stored by this service.
-- This service may re-broadcast telemetry to clients such as Air Traffic Control (ATC) software.
+Once a route is established, the departure time is used to perform aircraft selection. This is handled by `svc-scheduler`.
 
-`svc-assets`:
-- Operators can register and manage assets on the network.
-  - This may include pricing configurations, usage restrictions, or availability.
+As of software release three (R3), the following may occur:
+- Aircraft that will already be on the departure pad at the departure time may be assigned to the itinerary.
+- Nearby unassigned aircraft (on another pad or in air) may be assigned to the itinerary.
+- Nearby aircraft still on-mission may be assigned the itinerary, to be completed after the conclusion of their current mission.
 
-`svc-storage`:
-- Links to multiple storage solutions, paired with specific types of data.
-- Blockchain storage provides defensive "immutable" record keeping for certifications, maintenance records, previous flight plans, FAA confirmations.
-- Databases for CRUD operations on flight plans
-- Storage may be local to the services or on a cloud server.
+As demonstrated at the end of release two (R2), `svc-scheduler` will build a multi-hop itinerary for the aircraft that includes any deadhead (no cargo) flights needed to reach the departure pad.
 
+### 3.4.3 Compliance
 
-### 3.3.3 Rideshare and Cargo Interfaces
+These details will be used to build a draft **flight plan**. If the customer confirms the plan within a deadline, it will be written to `svc-storage`.
 
-<div align="center"> 
+`svc-compliance` will periodically check the status of flight plans in storage and will request approvals from the civil aviation authority for new entries.
 
-```mermaid
-flowchart TB
-classDef subgraph_padding fill:none,stroke:none
+### 3.4.4 Automated Air Traffic Control (ATC)
 
-subgraph Rideshare and Cargo
-subgraph p [ ]
-	share[svc-rideshare]
-	cargo[svc-cargo]
-    charter[svc-charter]
-	pay[svc-payment]
-	contact[svc-contact]
-end
-end
+Initial `svc-atc` implementation is planned for R3 and also utilizes the PostGIS database.
 
-customer[Client App] <--> share
-customer <--> cargo
-customer <--> charter
-customer <--> pay
-contact --> customer
+This microservice seeks to de-conflict airspace by detecting overlaps in flight paths.
 
-class p subgraph_padding
-```
-</div> 
+![Potential Collision](./assets/collision-detection.png)
 
-`svc-rideshare`, `svc-cargo`, `svc-charter`:
-- APIs for clients to request flights. Separated from airspace management (`svc-scheduler`).
+*Note: triangles appear warped due to spherical mercator projection. The actual area of each triangle is the same in this example.*
 
-`svc-payment`:
-- API for client apps to make payments in exchange for services.
+In future releases, `svc-atc` may command aircraft to change altitude, corridors, or other flight characteristics to reduce possibility of collision. `svc-atc` should maintain enough vehicle separation between aerial actors that onboard vehicle collision avoidance is a rare last resort.
 
-`svc-contact`:
-- Access to customer SMS, Email, Push Notifications
-## 3.4 Proposed Capabilities
+### 3.4.5 Data Streams
 
-<div align="center"> 
+![RabbitMQ Data Broker](./assets/cisp.png)
+
+RabbitMQ is an open-source message broker. At the moment, it is being used to rebroadcast de-duplicated telemetry to TCP listeners.
+
+This setup can also be used to provide updates regarding meteorological reports, no-fly zones, temporary flight restrictions, and so on.
+
+### 3.4.6 Client API
 
 Scenario | Description
 ---- | ----
-Private Charter | Clients<sup>*</sup> can register a flight plan through `svc-charter`, which passes their request to the Arrow PSU. Clients submit a flight plan specifying an aircraft, the departure vertiport, the arrival vertiport, the flight manifest, and the planned departure date and time.
-Rideshare | Clients request flights through a software API, website, or mobile app. `svc-rideshare` handles the customer interaction, and forwards the request to the PSU domain. In this case, a client only provides a departure time, a departure vertiport, and a destination vertiport.
-Cargo | Clients may request flights through a software API, website, or mobile app. Customer interaction is handled by `svc-cargo`, with confirmed flight requests forwarded the PSU domain of the Services ecosystem. Cargo clients provide a departure time, a departure vertiport, a destination vertiport, and the approximate weight of the cargo to be shipped. They may also specify if the trip will be recurring for planned deliveries.
+Cargo | Clients may request flights through a software API, website, or mobile app.<br>Customer interaction is handled by `svc-cargo`, with confirmed flight requests forwarded the PSU domain of the Services ecosystem.<br>Cargo clients provide a departure time, a departure vertiport, a destination vertiport, and the approximate weight of the cargo to be shipped.
+Rideshare | Clients request flights through a software API, website, or mobile app.<br>`svc-rideshare` handles the customer interaction, and forwards the request to the PSU domain.<br>In this case, a client only provides a departure time, a departure vertiport, and a destination vertiport.
 
 <sup>*</sup> Clients include individuals, companies, and automated processes
-
-</div> 
 
 In all of the above scenarios, the `svc-scheduler` in the Arrow PSU receives a request for a new flight and determines if that flight can be accommodated. It must take into account numerous factors such as vertiport schedules, available aircraft, weather, and emergency conditions.
 
@@ -358,20 +243,15 @@ In the rideshare scenario, aircraft have a known flight schedule and number of s
 In some cases, a flight plan request can be accommodated by simply swapping aircraft or lightly postponing a flight's departure time. `svc-scheduler`'s fleet routing optimization will perform these changes where allowed.
 
 In cases where the journey cannot be accommodated, alternatives should be recommended. UAM operators (pilots, vertiport operators) may issue commands directly to the `svc-scheduler` to cancel or modify a plan. This may occur mid-flight, such as in a medical emergency, or on a vertiport pad, such as when a vehicle fails pre-flight checks. These events will trigger a fleet optimization from `svc-scheduler` to accommodate the shift in plans.
-
 ## 3.5 Modes of Operations
 
 Modes of operation correspond with a general fleet routing behavior. They indicate the current goal of flight operations.
-
-<div align="center"> 
 
 Mode | Description
 --- | ---
 Nominal | New flight plans may be created if they can be accommodated.<br>Optimize rideshare flights to maximize passengers per aircraft.<br>Optimize flight graph to accommodate more flights per hour.<br>A buzzing flight graph maximizing motion.
 Wind Down | No new flights plans are accepted (save for municipal and emergency flights) for a given time frame.<br>Confirmed flight plans execute as previously planned.<br>Can still add new rideshare passengers to existing flight plans.<br>May occur daily to close flight operations if services are not 24/7.<br>"Throttles" a flight graph to reduce the level of activity.
 Emergency No-Fly | All aerial operations must cease at earliest opportunity, even if arrival vertiport is different than planned.<br>Improvised landing zones are authorized at this stage to handle vertiport overflow.<br>All live aircraft in the flight graph immediately "seek cover" at the nearest safe haven.
-
-</div> 
 
 Fleet routing can also be impacted by other factors such as vertiport redirect orders, restricted (or "special use") airspaces, and emergency flights taking precedence. These factors may apply to multiple modes of operation. In some cases, such as an emergency no-fly scenario, they are intentionally ignored.
 
@@ -380,15 +260,11 @@ Fleet routing can also be impacted by other factors such as vertiport redirect o
 
 See "Modes of Operation" (section 3.5).
 
-<div align="center"> 
-
 Mode | Scenario
 --- | ---
 Nominal | Nominal flight operations
 Wind Down | Ending daily flight operations<br>Overtaxed flight graph - intense delays, many hovering aircraft waiting for landing clearance
 Emergency No-Fly | Terrorism (including cyber attacks)<br>Sudden weather changes, such as a tornado touchdown
-
-</div> 
 
 The current mode can be conveyed over radio or cellular channels in the event of a critical outage of software services (electrical failures, solar flares, etc.). Such an event should initiate "Wind Down" mode (at minimum), and each pilot and UAM operator will follow a manual procedure for vertiport access and selection of improvised landing sites, if necessary.
 
@@ -397,7 +273,7 @@ The current mode can be conveyed over radio or cellular channels in the event of
 Nominal and off-nominal conditions will be addressed by service-level requirements, which will link up to high-level requirements. These documents are still being developed.
 
 Existing documents in this realm include:
-- [Services User Stories](https://docs.google.com/spreadsheets/d/1Ad238NAEj6QUzgsjPTRRFJy6NiQVQt2e7affwVVDAFo/edit#gid=0)
+- [Services User Stories](https://nocodb.arrowair.com/dashboard/#/nc/view/ce300383-bc2c-4023-afb7-83ebe062de56)
 - [Visualized Rideshare Scenarios (Slides)](https://docs.google.com/presentation/d/1Nt91KVIczhxngurfyeIJtG8J0m_38jGU1Cnqm1_BfPc/edit#slide=id.p1)
 
 ## 5.0 Physical Environment
@@ -534,6 +410,7 @@ Consider the following environments for which eVTOL technologies thrive:
 
 </div>
 
+This deserves some special note; where traditionally vessels must dock and unload at a specific location, aerial unloading can be performed from a vessel anywhere offshore to any location inland (within the limits of the cargo vehicle).
 
 <div align="center">
 
@@ -826,4 +703,4 @@ We will be seeking guidance from NASA, FAA, EASA, and other regional agencies re
 
 ## Appendix B: Acronyms & Glossary
 
-See the [Arrow Glossary](https://www.arrowair.com/docs/documentation/glossary).
+See the [Arrow Glossary](https://nocodb.arrowair.com/dashboard/#/nc/view/7235b38d-12e4-4e4e-8210-bc564be1706e).
