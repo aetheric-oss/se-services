@@ -1,14 +1,12 @@
 # Interface Control Document (ICD) - Services
 
-<center>
-
-<img src="https://github.com/Arrow-air/tf-github/raw/main/src/templates/doc-banner-services.png" style="height:250px" />
+![Aetheric Banner](https://github.com/aetheric-oss/.github/blob/main/assets/readme-banner.png)
 
 </center>
 
 ## :telescope: Overview
 
-This document details the common software interfaces required by all services in the Arrow ecosystem.
+This document details the common software interfaces required by all services in the Aetheric ecosystem.
 
 Each service may add additional interfaces.
 
@@ -64,7 +62,7 @@ The `client-rest` crate for each microservice (e.g. `svc-cargo-client-rest`) can
 
 Login and authentication services are still being decided.
 
-Arrow may leave this to external (non-Arrow) services, such as:
+Aetheric may leave this to external (non-Arrow) services, such as:
 - SSO
 - Google/Facebook/Apple Credentials
 - Web3 Auth (crypto wallet)
@@ -77,7 +75,7 @@ Cloud hosting services (such as AWS Cloud Trail) offer auditing tools for an API
 
 ### :vertical_traffic_light: Rate Limiting
 
-In a Denial of Service (DoS) attack, an attacker issues bursts of API requests in an attempt to exhaust finite server resources. If successful, DoS attacks can occupy disk usage, memory, CPU time, and power - slowing or crashing other server programs. This is of particular concern to the Arrow services, which include safety-critical processes.
+In a Denial of Service (DoS) attack, an attacker issues bursts of API requests in an attempt to exhaust finite server resources. If successful, DoS attacks can occupy disk usage, memory, CPU time, and power - slowing or crashing other server programs. This is of particular concern to the Aetheric services, which include safety-critical processes.
 
 Cloud hosting services (such as AWS and GCP) offer rate-limiting features to throttle API requests. AWS and GCP can apply throttles across all accounts and clients in a region, an additional defense against distributed DoS (DDoS) attacks originating from many devices.
 
@@ -98,7 +96,7 @@ Features of gRPC:
 + Integrated TLS/SSL authentication and encryption
 + Supports both client and server-side streaming.
 
-Arrow services, which are written in Rust Programming Language, access gRPC features through the [`tonic`](https://docs.rs/tonic/latest/tonic/) library.
+Aetheric services, which are written in Rust Programming Language, access gRPC features through the [`tonic`](https://docs.rs/tonic/latest/tonic/) library.
 
 ### :scroll: Files
 
@@ -174,7 +172,7 @@ gRPC server methods are called "services", an unfortunate name clash with the br
 
 [Istio](https://istio.io/latest/) is software for service monitoring and traffic control.
 
-Arrow Services are run in Docker containers. All traffic to that service first flows through an associated Istio container, which acts as a reverse proxy for the Service. This allows the Istio container to dictate access, monitor and shape traffic, and produce detailed logs.
+Aetheric Services are run in Docker containers. All traffic to that service first flows through an associated Istio container, which acts as a reverse proxy for the Service. This allows the Istio container to dictate access, monitor and shape traffic, and produce detailed logs.
 
 Istio configuration files are in `.yaml` format. Each service's repository will track an Istio file.
 

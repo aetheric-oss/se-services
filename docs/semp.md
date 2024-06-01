@@ -10,7 +10,7 @@
 
 Terms | Descriptions
 --- | ---
-Core Team | Members of the [GitHub Team](https://github.com/orgs/Arrow-air/teams) relevant to product
+Core Team | Members of the [GitHub Team](https://github.com/orgs/aetheric-oss/teams) relevant to product
 Release/Version | "Release" and "Version" are used interchangeably in this document
 
 ## Overview
@@ -52,7 +52,7 @@ Can I merge my branch straight to `main` or `develop`?
 - Other collaborators must review the code, make comments, and give their
 approvals prior to merging the branch.
 
-The official [Arrow Developer Guide](https://www.arrowair.com/docs/contributing/devguide) describes this process in specifics.
+The official [Aetheric Developer Guide](https://www.arrowair.com/docs/contributing/devguide) describes this process in specifics.
 
 ### :bookmark: Creating a Release
 
@@ -277,7 +277,7 @@ Version naming should follow [semver guidelines](https://semver.org/).
 
 ### :globe_with_meridians: Locations
 
-Here we define the complete list of product documents produced by Arrow.
+Here we define the complete list of product documents produced by.
 
 | Document | Where? | Why? |
 | ---- | ---- | ---- |
@@ -299,7 +299,7 @@ A high-level overview of a module or product.
 Defines the scope of development, support, and testing.
 
 Relevant:
-- [Arrow CONOPS Template](https://docs.google.com/document/d/1AhwyUmMH1rbmqMcTd1EyFIDcn-ItmaPxc7lKdZSf-q8/edit?usp=sharing)
+- [Aetheric CONOPS Template](https://docs.google.com/document/d/1AhwyUmMH1rbmqMcTd1EyFIDcn-ItmaPxc7lKdZSf-q8/edit?usp=sharing)
 - [NASA CONOPS Template](https://www.nasa.gov/seh/appendix-s-concept-of-operations/)
 
 #### :running: User Stories
@@ -368,7 +368,7 @@ Document containing:
 - Explanation of memory allocations
 
 Relevant:
-- [Service SDD Template](https://github.com/Arrow-air/svc-template-rust/blob/develop/docs/sdd.md)
+- [Service SDD Template](https://github.com/aetheric-oss/svc-template-rust/blob/develop/docs/sdd.md)
 - [Library SDD Template](https://github.com/Arrow-air/lib-template-rust/blob/develop/docs/sdd.md)
 
 #### :heavy_check_mark: Verification & Validation (V&V) Document
@@ -380,7 +380,7 @@ Document detailing:
 - Frameworks Used
 
 Relevant Documentation:
-- 🚧 Arrow V&V Template
+- 🚧 Aetheric V&V Template
 - [V&V Wiki](https://en.wikipedia.org/wiki/Software_verification_and_validation)
 
 #### :mailbox_with_mail: Interface Control Document (ICD)
@@ -391,7 +391,7 @@ This document details:
 - Frameworks and Libraries
 
 Relevant:
-- 🚧 Arrow ICD Template
+- 🚧 Aetheric ICD Template
 
 #### :diamond_shape_with_a_dot_inside: Configuration Management (CM) Document
 

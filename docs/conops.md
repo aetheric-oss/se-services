@@ -1,8 +1,7 @@
 # Concept of Operations - Software Services
 
-<div align="center">
 
-<img src="https://github.com/Arrow-air/tf-github/raw/main/src/templates/doc-icon-blue-navy.png" style="height:250px" />
+![Aetheric Banner](https://github.com/aetheric-oss/.github/blob/main/assets/readme-banner.png)
 
 Item | Value
 --- | ---
@@ -101,7 +100,7 @@ Each service has its own set of documents which should be referred to for more d
 - Interface Control Document (ICD)
 - Verification and Validation (V&V) Document
 
-Requirements for all microservices are hosted on our [Arrow Air NocoDB](https://nocodb.arrowair.com/dashboard/#/base/c436b0fb-9d80-4465-880c-860ce8300839) instance.
+Requirements for all microservices are hosted on our [Aetheric NocoDB](https://nocodb.arrowair.com/dashboard/#/base/c436b0fb-9d80-4465-880c-860ce8300839) instance.
 
 ## 3.2 Overview of System and Key Elements
 
@@ -111,13 +110,13 @@ These services enable UAM operators to access airspace legally, safely, and secu
 
 Microservice | Responsibilities
 --- | ---
-[`svc-scheduler`](https://github.com/Arrow-air/svc-scheduler) | Dynamic airspace management.<br>Vertiport scheduling.<br>Flight plan bookkeeping<br>Fleet routing optimization.
-[`svc-gis`](https://github.com/Arrow-air/svc-gis) | Abstracted interface to the PostGIS server.
-[`svc-storage`](https://github.com/Arrow-air/svc-storage) | Abstracted storage interface for other services.<br>Logs, flight plans, telemetry, vertiport specifications, personnel data, maintenance records, certification records, and so on.<br>Gateway to the CockroachDB cluster.
-[`svc-compliance`](https://github.com/Arrow-air/svc-compliance) | Notifications, flight restrictions, authorization approvals from local authority.<br>Automated dispatch of flight plans and release requests to local authority.<br>Regulatory formats such as FIDXP<sup>*</sup>.
-[`svc-atc`](https://github.com/Arrow-air/svc-atc) | Responsible for de-conflicting active flight trajectories.<br>Importance increases with number of aerial actors.<br>Issues commands to aircraft to change airspace corridors to avoid possible collisions.
-[`svc-discovery`](https://github.com/Arrow-air/svc-discovery) | Interaction with other PSUs.<br>Standardized PSU interfaces such as U-Space.
-[`svc-telemetry`](https://github.com/Arrow-air/svc-telemetry) | Receives, deduplicates, and stores live vehicle telemetry.<br>Rebroadcasts to ATC tools and other authenticated listeners.
+[`svc-scheduler`](https://github.com/aetheric-oss/svc-scheduler) | Dynamic airspace management.<br>Vertiport scheduling.<br>Flight plan bookkeeping<br>Fleet routing optimization.
+[`svc-gis`](https://github.com/aetheric-oss/svc-gis) | Abstracted interface to the PostGIS server.
+[`svc-storage`](https://github.com/aetheric-oss/svc-storage) | Abstracted storage interface for other services.<br>Logs, flight plans, telemetry, vertiport specifications, personnel data, maintenance records, certification records, and so on.<br>Gateway to the CockroachDB cluster.
+[`svc-compliance`](https://github.com/aetheric-oss/svc-compliance) | Notifications, flight restrictions, authorization approvals from local authority.<br>Automated dispatch of flight plans and release requests to local authority.<br>Regulatory formats such as FIDXP<sup>*</sup>.
+[`svc-atc`](https://github.com/aetheric-oss/svc-atc) | Responsible for de-conflicting active flight trajectories.<br>Importance increases with number of aerial actors.<br>Issues commands to aircraft to change airspace corridors to avoid possible collisions.
+[`svc-discovery`](https://github.com/aetheric-oss/svc-discovery) | Interaction with other PSUs.<br>Standardized PSU interfaces such as U-Space.
+[`svc-telemetry`](https://github.com/aetheric-oss/svc-telemetry) | Receives, deduplicates, and stores live vehicle telemetry.<br>Rebroadcasts to ATC tools and other authenticated listeners.
 
 <sup>*</sup> FAA-Industry Data Exchange Protocol
 
@@ -136,11 +135,11 @@ Some of these microservices expose a public API. They handle transactions with c
 
 Service | Responsibilities
 --- | ---
-[`svc-assets`](https://github.com/Arrow-air/svc-assets) | Allow external clients to register and management assets (aircraft and vertiports).
-[`svc-cargo`](https://github.com/Arrow-air/svc-cargo) | The public API for clients to request cargo transport through Arrow Services
-[`svc-pricing`](https://github.com/Arrow-air/svc-pricing) | Provides the ticket price of an itinerary based on various pricing models.
-[`svc-contact`](https://github.com/Arrow-air/svc-contact) | This service has sole access to customer information, the interface to issue notifications to a client
-[`svc-docs`](https://github.com/Arrow-air/svc-docs) | Generates invoices and bills of lading for the customer and shipper.
+[`svc-assets`](https://github.com/aetheric-oss/svc-assets) | Allow external clients to register and management assets (aircraft and vertiports).
+[`svc-cargo`](https://github.com/aetheric-oss/svc-cargo) | The public API for clients to request cargo transport through Aetheric Services
+[`svc-pricing`](https://github.com/aetheric-oss/svc-pricing) | Provides the ticket price of an itinerary based on various pricing models.
+[`svc-contact`](https://github.com/aetheric-oss/svc-contact) | This service has sole access to customer information, the interface to issue notifications to a client
+[`svc-docs`](https://github.com/aetheric-oss/svc-docs) | Generates invoices and bills of lading for the customer and shipper.
 `svc-payment` | Payment processing, accepting traditional payments and cryptocurrencies.
 `svc-upkeep` | Monitor expiration of vehicle and component certifications<br>Preemptively schedule flights for maintenance
 
@@ -150,27 +149,27 @@ This section describes the interfaces of the system with any other systems that 
 
 <div align="center"> 
 
-![Arrow Network Interfaces](./assets/interfaces.png)
+![Aetheric network Interfaces](./assets/interfaces.png)
 
 </div>
 
 Interface | Description
 --- | ---
-[`svc-discovery`](https://github.com/Arrow-air/svc-discovery) | Other PSUs may need to coordinate with this PSU in scheduling flights.<br>Other PSUs may request information from the network.
-[`svc-compliance`](https://github.com/Arrow-air/svc-compliance) | Information exchanged with civil aviation authorities may include notifications, confirmation of flight authorization, flight restrictions, flight corridors, and Special Use/Activity Airspaces (SAA).<br>FAA-Industry Data Exchange Protocol (FIDXP) is an interface that allows UAM operators to obtain information from the United States [National Airspace System (NAS) Data Exchange](https://www.faa.gov/air_traffic/nas/).<br>Data exchange formats may differ based on region.
-[`svc-atc`](https://github.com/Arrow-air/svc-atc) | Issues commands to (especially unmanned) aircraft to change flight corridors, heading, velocity, or other flight characteristics in order to de-conflict colliding flight paths.<br>Vehicle-to-vehicle avoidance should be last resort, as ATC should prevent these collisions in advance.<br>Aircraft responses are captured by the telemetry service.
-[`svc-telemetry`](https://github.com/Arrow-air/svc-telemetry) | Vertiports and vehicles broadcast telemetry, which is processed and stored by this service.<br>This service may re-broadcast telemetry to clients such as Air Traffic Control (ATC) software.<br>De-duplicates telemetry (from multiple reporters) for a clean feed to svc-atc.
-[`svc-assets`](https://github.com/Arrow-air/svc-assets) | Operators can register and manage assets on the network.<br>  This may include pricing configurations, usage restrictions, or availability.
-[`svc-cargo`](https://github.com/Arrow-air/svc-cargo) | APIs for clients to request flights.
-[`svc-contact`](https://github.com/Arrow-air/svc-contact) | Calls the API of an Email/SMS service with form data to contact customers, operators, and other stakeholders.
-[`svc-pricing`](https://github.com/Arrow-air/svc-pricing) | Operators' pricing algorithms may exist on an outside server.<br>They can expose an standardized API through which svc-pricing obtains the price of a flight for a customer using the operators' assets.
+[`svc-discovery`](https://github.com/aetheric-oss/svc-discovery) | Other PSUs may need to coordinate with this PSU in scheduling flights.<br>Other PSUs may request information from the network.
+[`svc-compliance`](https://github.com/aetheric-oss/svc-compliance) | Information exchanged with civil aviation authorities may include notifications, confirmation of flight authorization, flight restrictions, flight corridors, and Special Use/Activity Airspaces (SAA).<br>FAA-Industry Data Exchange Protocol (FIDXP) is an interface that allows UAM operators to obtain information from the United States [National Airspace System (NAS) Data Exchange](https://www.faa.gov/air_traffic/nas/).<br>Data exchange formats may differ based on region.
+[`svc-atc`](https://github.com/aetheric-oss/svc-atc) | Issues commands to (especially unmanned) aircraft to change flight corridors, heading, velocity, or other flight characteristics in order to de-conflict colliding flight paths.<br>Vehicle-to-vehicle avoidance should be last resort, as ATC should prevent these collisions in advance.<br>Aircraft responses are captured by the telemetry service.
+[`svc-telemetry`](https://github.com/aetheric-oss/svc-telemetry) | Vertiports and vehicles broadcast telemetry, which is processed and stored by this service.<br>This service may re-broadcast telemetry to clients such as Air Traffic Control (ATC) software.<br>De-duplicates telemetry (from multiple reporters) for a clean feed to svc-atc.
+[`svc-assets`](https://github.com/aetheric-oss/svc-assets) | Operators can register and manage assets on the network.<br>  This may include pricing configurations, usage restrictions, or availability.
+[`svc-cargo`](https://github.com/aetheric-oss/svc-cargo) | APIs for clients to request flights.
+[`svc-contact`](https://github.com/aetheric-oss/svc-contact) | Calls the API of an Email/SMS service with form data to contact customers, operators, and other stakeholders.
+[`svc-pricing`](https://github.com/aetheric-oss/svc-pricing) | Operators' pricing algorithms may exist on an outside server.<br>They can expose an standardized API through which svc-pricing obtains the price of a flight for a customer using the operators' assets.
 [RabbitMQ](https://www.rabbitmq.com/) | A message broker node streaming network data to authenticated listeners.<br>Example: telemetry streams for air traffic control.
 
 ## 3.4 Capabilities
 
 ### 3.4.1 Aircraft Routing
 
-![Arrow Routing Microservices Interaction](./assets/postgis.png)
+![Aetheric Routing Microservices Interaction](./assets/postgis.png)
 
 Aircraft routing and automated ATC is performed with the help of a PostGIS database.
 
@@ -236,7 +235,7 @@ Rideshare | Clients request flights through a software API, website, or mobile a
 
 <sup>*</sup> Clients include individuals, companies, and automated processes
 
-In all of the above scenarios, the `svc-scheduler` in the Arrow PSU receives a request for a new flight and determines if that flight can be accommodated. It must take into account numerous factors such as vertiport schedules, available aircraft, weather, and emergency conditions.
+In all of the above scenarios, the `svc-scheduler` in the Aetheric PSU receives a request for a new flight and determines if that flight can be accommodated. It must take into account numerous factors such as vertiport schedules, available aircraft, weather, and emergency conditions.
 
 In the rideshare scenario, aircraft have a known flight schedule and number of seats. `svc-scheduler` will assign riders to an aircraft with available seats, with minor adjustments to departure times if necessary and possible. Similarly in the cargo scenario, the `svc-scheduler` will assign cargo to an available cargo aircraft.
 
@@ -293,9 +292,9 @@ The physical environment of these services is a set of servers. The location of 
 </div>
 
 ### 5.0.1 PSU Locations
-Provider of Service (PSU) elements will be replicated per region, meaning each region with Arrow operations should host a local physical server. This is to minimize communication delay to aerial actors within the region of operation and to reduce the load on each service by filtering out other regions. 
+Provider of Service (PSU) elements will be replicated per region, meaning each region with Aetheric operations should host a local physical server. This is to minimize communication delay to aerial actors within the region of operation and to reduce the load on each service by filtering out other regions. 
 
-For example, a city will have its own `svc-scheduler` instance that only manages the airspace and vertiport schedules of that city's region. Cross-region transfers will be negotiated through the city's PSU interface (`svc-discovery`) and the destination region's PSU interface (which may be another `svc-discovery`, if the destination PSU is based on Arrow Services).
+For example, a city will have its own `svc-scheduler` instance that only manages the airspace and vertiport schedules of that city's region. Cross-region transfers will be negotiated through the city's PSU interface (`svc-discovery`) and the destination region's PSU interface (which may be another `svc-discovery`, if the destination PSU is based on Aetheric Services).
 
 PSU services are *safety-critical* and must continue to execute as long as there are aerial operations occurring. Downtime of the `svc-scheduler` in particular can produce unfavorable conditions for pilots, who would no longer be notified of vertiport schedules.
 
@@ -322,15 +321,15 @@ These possibly include:
 
 ## 6.0 Support Environment
 
-Arrow (or a division of the local civil aviation authority) will maintain a team of IT professionals and system administrators. Some of these individuals may require government clearance or special regulatory licenses depending on the location and capabilities of the system.
+Aetheric (or a division of the local civil aviation authority) will maintain a team of IT professionals and system administrators. Some of these individuals may require government clearance or special regulatory licenses depending on the location and capabilities of the system.
 
-Each instance of the PSU is composed of various microservices. These microservices may be upgraded or downgraded remotely for incremental rollout or rollback on a region-by-region basis. Arrow will maintain a live map of the status and versions of each service, information which is contained in each service's health and status packet. Configuration management (CM) will be detailed in a separate, more detailed document.
+Each instance of the PSU is composed of various microservices. These microservices may be upgraded or downgraded remotely for incremental rollout or rollback on a region-by-region basis. Aetheric will maintain a live map of the status and versions of each service, information which is contained in each service's health and status packet. Configuration management (CM) will be detailed in a separate, more detailed document.
 
 An authorized individual should be onsite (or nearby) at every server location during aerial operations to attend server hardware in the event of crashes and outages.
 
 ## 7.0 Impact Considerations
 
-This section limits discussion to Arrow software services which enable rideshares, cargo operations, and numerous simultaneous aerial actors.
+This section limits discussion to Aetheric software services which enable rideshares, cargo operations, and numerous simultaneous aerial actors.
 
 <div align="center">
 
@@ -432,7 +431,7 @@ The effects of increased VTOL aerial operations on wildlife should be researched
 
 ## 7.2 Organizational Impacts
 
-This section discusses potential jobs and positions in an Arrow network. It is largely speculative.
+This section discusses potential jobs and positions in an Aetheric network. It is largely speculative.
 
 <div align="center">
 
@@ -444,21 +443,21 @@ This section discusses potential jobs and positions in an Arrow network. It is l
 
 ### 7.2.1 Vertiport Operators
 
-Vertiports on the Arrow network stand to be owned and operated by:
+Vertiports on the Aetheric network stand to be owned and operated by:
 - Government
 - Private Corporations
 - Individuals
 
-In all three cases, Arrow may impose operational and cleanliness standards for a vertiport to be supported by the Arrow network. These standards would be informed in part by government requirements.
+In all three cases, Aetheric may impose operational and cleanliness standards for a vertiport to be supported by the Aetheric network. These standards would be informed in part by government requirements.
 
 A vertiport operator's responsibilities include ensuring that:
 - Aircraft depart on schedule.
 - Operational status is accurately reported.
 - Standards of safety and cleanliness are met for the entire vertiport (pads and adjoining passenger areas).
 
-Only specific persons in the Arrow database can conduct pre-flight inspections and approve aircraft takeoff. Vertiport operators are responsible for maintaining and accurately reporting the certifications of personnel.
+Only specific persons in the Aetheric database can conduct pre-flight inspections and approve aircraft takeoff. Vertiport operators are responsible for maintaining and accurately reporting the certifications of personnel.
 
-Periodic inspections may occur, conducted through an independent agency or a rotating team of Arrow officials. The details of the inspection would be stored in an immutable (uneditable) database and would include the name of the inspector and agency for public review.
+Periodic inspections may occur, conducted through an independent agency or a rotating team of Aetheric officials. The details of the inspection would be stored in an immutable (uneditable) database and would include the name of the inspector and agency for public review.
 
 ### 7.2.2 UAM Controllers (aka Fleet Operators)
 
@@ -478,7 +477,7 @@ The employment structure of aviation mechanics is to be determined. Outside of g
 
 Alternatively, maintenance vertiports may be completely shared. A certified mechanic may be able to work on any make or model of aircraft.
 
-Certified mechanics may set up their own vertiports on the Arrow PSU, similar to automobile repair shops. A dedicated vertiport operator is still required in this case. Collective ownership of a vertiport by multiple attached mechanic shops is allowed and encouraged.
+Certified mechanics may set up their own vertiports on the Aetheric PSU, similar to automobile repair shops. A dedicated vertiport operator is still required in this case. Collective ownership of a vertiport by multiple attached mechanic shops is allowed and encouraged.
 
 ### 7.2.4 System Administrators and IT Services
 Servers and onsite tech support.
@@ -489,7 +488,7 @@ Consultants or part-time government liaisons will be required to communicate wit
 
 ### 7.2.6 Legal
 
-Handle lawsuits against the Arrow Services. Crisis management, prevention. Adherence to local civil aviation laws. Submission of appropriate paperwork.
+Handle lawsuits against the Aetheric Services. Crisis management, prevention. Adherence to local civil aviation laws. Submission of appropriate paperwork.
 
 ### 7.2.7 Public Relations
 
@@ -647,7 +646,7 @@ To an extent, VTOL networks are also affected by these factors. VTOL aircraft ar
 
 Especially in early phases with limited vertiport and aircraft, rideshares and charters will possibly charge a premium in order to fund further capital investment in the VTOL network. These premiums are planned to dissipate with increased access and vertiport competition. However, it would be honest to postulate that a socioeconomic disparity in ridership could be present in early operations.
 
-It is not Arrow's intention to solely market to high-income persons. In the long term, it is critical that all individuals spanning the income spectrum continue to choose VTOL services over automobiles. Politically, the support of affluent individuals and the popular vote of middle-to-lower income riders will be critical to establishing more vertiports and increasing rider throughput. Ethically and morally, it is incumbent that new and better transit solutions are offered equally to individuals of all socioeconomic statuses. Given that VTOL networks are an economic gateway, failure to do so would be a direct contribution to wealth inequality.
+It is not Aetheric's intention to solely market to high-income persons. In the long term, it is critical that all individuals spanning the income spectrum continue to choose VTOL services over automobiles. Politically, the support of affluent individuals and the popular vote of middle-to-lower income riders will be critical to establishing more vertiports and increasing rider throughput. Ethically and morally, it is incumbent that new and better transit solutions are offered equally to individuals of all socioeconomic statuses. Given that VTOL networks are an economic gateway, failure to do so would be a direct contribution to wealth inequality.
 
 ### 8.0.3 Political Opposition
 
@@ -673,17 +672,17 @@ Potential opponents to VTOL services could include:
 
 ### 8.0.4 Anonymous Contribution
 
-Arrow is an open-source ecosystem with many anonymous international contributors. It is understood that some government systems place restrictions on non-citizen developers or require identity verification. Arrow will be seeking guidance from regulatory bodies on this matter.
+Aetheric is an open-source ecosystem with many anonymous international contributors. It is understood that some government systems place restrictions on non-citizen developers or require identity verification. Aetheric will be seeking guidance from regulatory bodies on this matter.
 
-As it stands, Arrow has a strict set of rules in place to ensure trustworthy contributions to the codebase.
+As it stands, Aetheric has a strict set of rules in place to ensure trustworthy contributions to the codebase.
 
-Arrow requires multiple "code owner" approvals before code can be contributed. Code owners are administrators of the Arrow software teams and have substantial personal involvement with the Arrow codebase. The codebase does not allow contributions without proper approvals, even changes from administrators themselves.
+Aetheric requires multiple "code owner" approvals before code can be contributed. Code owners are administrators of the Aetheric software teams and have substantial personal involvement with the Aetheric codebase. The codebase does not allow contributions without proper approvals, even changes from administrators themselves.
 
-Arrow requires contributors to "sign" changes using a cryptographic signature (GPG). The signature indicates that a single individual's account is responsible for all changes made in their name. The Arrow code repositories will automatically reject unsigned changes.
+Aetheric requires contributors to "sign" changes using a cryptographic signature (GPG). The signature indicates that a single individual's account is responsible for all changes made in their name. The Aetheric code repositories will automatically reject unsigned changes.
 
-Online ID verification services can be used to verify identities while preserving contributors' anonymity. These are not used by Arrow as of yet.
+Online ID verification services can be used to verify identities while preserving contributors' anonymity. These are not used by Aetheric as of yet.
 
-In addition to official security audits, Arrow will periodically offer public bounties for documented exploits. The white hat hacker community's help will be invaluable in securing our services and demonstrating our commitment to cyber security.
+In addition to official security audits, Aetheric will periodically offer public bounties for documented exploits. The white hat hacker community's help will be invaluable in securing our services and demonstrating our commitment to cyber security.
 
 ### 8.0.5 International Contributors
 
@@ -703,4 +702,4 @@ We will be seeking guidance from NASA, FAA, EASA, and other regional agencies re
 
 ## Appendix B: Acronyms & Glossary
 
-See the [Arrow Glossary](https://nocodb.arrowair.com/dashboard/#/nc/view/7235b38d-12e4-4e4e-8210-bc564be1706e).
+See the [Aetheric Glossary](https://nocodb.arrowair.com/dashboard/#/nc/view/7235b38d-12e4-4e4e-8210-bc564be1706e).
